@@ -20,4 +20,13 @@
 	-Nothing else, felt quite worse than anytime this week, hurt to breathe and headache
 27.09.2025 - The great code unshittification and rewrite
 	-Started work on rewriting/polishing code, plus making it look prettier and adding comments
-	-Added a logbook that's less of a shitpost, and was written by one of my friends. Basically headcanonning on seraph... what a run huh
+	-Added a logbook info that's less of a shitpost, and was written by one of my friends. Basically headcanonning on seraph... what a run huh
+	-Refined the shatter and field debuffs code
+	-Refined the primary code (less jank, still a lot)
+	-Messed around with the sprites
+	-Added a hitbox mask
+	-Adjusted Primary and Secondary hitbox positions to match new Seraph's hitbox + sprites
+	-Started on rewriting Secondary's code
+	-Fixed Shatter proccing itself (you hit one shattered enemy in proximity to 4 others, without the shatter debuff - it would summon 5 explosions. Fixed now)
+	-RAAAHHHHH fixed that DUMB SHITASS BUG that caused the non-damagers/utility attacks to trigger procs (bleed, atgs, etc with 0 damage) - now orb, utility pull
+	and utility bash no longer do that dumb sick shit!!!! (i was blind and didn't see the can_proc property for fire_explosion and fire_direct)
