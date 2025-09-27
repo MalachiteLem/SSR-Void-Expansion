@@ -1,0 +1,23 @@
+23.09.2025 - Start of the work on Port, again
+	-Use of Beebo's sprite to make idle, walk and fall sprites
+	-Test of allllll of the old code. Everything works, all bugs are the same old
+24.09.2025 - The great spriting work
+	-Added primary, secondary, utility, special, walk back sprites
+	-Added skins: Foe, Friend, Golden, Ocean
+	-Re-did code for Shatter and Field, now they should do things properly:
+		-Shatter: enemies now walk at 0.05x speed multiplier, and have their attack multiplier is 0.4. Attack multipler doesn't seem to work at all, but not critical.
+		-Field: Added visual overlay of magenta/purple color (depending on whether scepter/not, magenta is default and purple is scept); boss enemies don't get their
+	attack speed reduced or state set to 50, fixing some of the bugs
+	-Adjusted sprites to match
+25.09.2025 - The great spriting work 2, electric boogaloo
+	-Added placeholders for alt primary, utility and special
+	-Added skill icons for alt skills
+	-Slightly adjusted older skill icons (also fun fact, I THINK seraph ss1 utility icon is meant to represent the survivor itself and its arms, so the new icon for it
+	here represents just that!)
+	-Adjusted text files to make the text less clunky to read
+26.09.2025 - The great nothing
+	-Spent full day working on CSS select sprite, ended up ruining it on accident and have to redo it all
+	-Nothing else, felt quite worse than anytime this week, hurt to breathe and headache
+27.09.2025 - The great code unshittification and rewrite
+	-Started work on rewriting/polishing code, plus making it look prettier and adding comments
+	-Added a logbook that's less of a shitpost, and was written by one of my friends. Basically headcanonning on seraph... what a run huh

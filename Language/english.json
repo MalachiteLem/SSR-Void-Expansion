@@ -1,0 +1,183 @@
+{
+    "survivor": {
+        "seraph": {
+            "name": "Seraph",
+            "nameUpper": "SERAPH",
+            "description": "The <y>Seraph</c> controls the environment with gravity manipulation skills that allow for debuffing and annihilating groups of enemies quickly. <y>Grace Field</c> stops time in areas, allowing for attack chains with <y>Disturbance</c> and <y>Void Breach</c> without putting yourself or your allies at risk.",
+            "endQuote": "..and so it left, following the trail for what once was.",
+            "story": "\n				...<b>[TRANSM</c><p>??</c><b>SION RECE</c><p>??</c><b>ED..?]</c>\n\n<b>[AUDIO FILE RECEIVED, TRANSMISSION #?????]</c>\n\n		[Deep, unsteady breathing, followed by a twisted voice] Can anyo- -[UNINTELLIGIBLE]- me? Anyone?\n		I don't know how... -[UNINTELLIGIBLE]- I spent here... I don't even know where this 'here' is... It's all just... [Breath hitching]...\n	It's all just... flying, fractured... islands..? I don't even... know... -[UNINTELLIGIBLE]-... \n		I... have some. Supplies left... but... they won't last for more than... a week... I had... Ha... I- -[Deep inhale, followed by crunch of something under boots]- I had a lot. For... for whole two years... is it two years? Is this how long am I here?	\n		-[UNINTELLIGIBLE]- I- I hear it again, those- those steps, those sounds... its... that thing, again. It... it looks like one of... of ours..? But... Their helmet is cracked, they're... tall. Really, really tall. And... -[UNINTELLIGIBLE]- -[UNINTELLIGIBLE]-... \n		Ha... I... They have long arms, right... right... I... I don't know if... if its after me... or if it saw me but ignored, because... [Sound of something falling with a heavy thud]... because it knows my days are already counted? I... I want to... to reach out and... speak... communicate with it... but I am also so... so... [Deep inhale]... afraid that it might be hostile if I try to... I... I can't...\n\n	I spent too long here... I am hearing sounds and voices... I... Please... someone... -[UNINTELLIGIBLE]-... I... Ha... Haha.. I may be just speaking to myself... I don't... even know if my signal will be enough to... to get received... I just... Haha... Hope someone... will get me out of this place... [Footsteps approaching]...\n That... that thing is approa... approaching...? I-... -[UNINTELLIGIBLE]- -[UNINTELLIGIBLE]-... G-GO<p>??DBY</c>E-\n\n [END OF TRANSMISSION]"
+        },
+          "pyro": {
+	"name": "Pyro",
+	"nameUpper": "PYRO",
+            	"description": "The <y>Pyro</c> is equipped with a flamethrower, utilizing it for own advantage. <y>Scorch</c> enemies to build up his heat gauge, <y>empowering</c> other skills at high levels of heat. Pyro is able to distance himself from threats with <y>Heatblast</c>, while also effectively clearing groups of enemies with <y>Blazeborne</c>.",
+            "endQuote": "..and so he left, scorching his way into a brighter future.",
+            "story": "I am so badass, and they call me Pyro. Pyro like PYROmaniac, you get it? (killing myself over that joke.)"
+       }
+    },
+    "skill": {
+        "seraphZ": {
+            "name": "Seraph's Grasp",
+            "description": "Fire void energy at enemies for <y>140% damage in a small area</c>. <b>You can shoot while moving.</c>"
+        },
+		"seraphZ2": {
+            "name": "Seraph's Focus",
+            "description": "Placeholder (i've got no idea for a good alt primary, or any other skill)"
+        },
+        "seraphX": {
+            "name": "Void Breach",
+            "description": "<y>Create a breach</c> which applies <y>Shatter</c> debuff to enemies. Enemies with the <y>Shatter</c> debuff <y>explode</c> for <y>400% damage when hit</c>."
+        },
+        "seraphC": {
+            "name": "Disturbance",
+            "description": "While <b>moving</c>: <b>pull</c> enemies towards you, damaging them for <y>110% damage</c> and <b>pushing yourself forward</c>.\nWhile <b>still</c>: <b>raise</c> enemies into the air and <y>bash</c> them to the ground for <y>310% damage</c>."
+        },
+        "seraphC2": {
+            "name": "Rupturing",
+            "description": "Placeholder (i've got no idea for a good alt primary, or any other skill)."
+        },
+        "seraphV": {
+            "name": "Grace Field",
+            "description": "<y>Create a void energy field at you position</c> for 4 seconds. In the field; <b>reduced utility skill cooldown</c>, <y>enemies get stopped in time</c>."
+        },
+        "seraphVBoosted": {
+            "name": "Void Field",
+            "description": "<y>Create a void energy field at you position</c> for 6 seconds. In the field; <b>reduced utility skill cooldown for all allies</c>, <y>enemies get stopped in time and have Shatter debuff applied to them continuously</c>."
+        },
+        "seraphV2": {
+            "name": "Placeholder",
+            "description": "Placeholder (i've got no idea for a good alt primary, or any other skill)"
+        },
+        "seraphV2Boosted": {
+            "name": "Placeholder",
+            "description": "Placeholder (i've got no idea for a good alt primary, or any other skill)."
+        },
+        "pyroZ": {
+           "name": "Scorch",
+           "description": "<y>Burn</c> nearby enemies for <y>50% damage</c> and gain <y>heat</c>. On high heat levels, <y>ignite</c> enemies, dealing damage over time."
+        },
+        "pyroX": {
+           "name": "Scald",
+           "description": "<y>Consume heat</c> and release a powerful wave of fire <y>dealing 100% damage and pushing enemies back</c>."
+        },
+        "pyroC": {
+           "name": "Heatblast",
+           "description": "<b>Launch yourself forward at low heat levels.</c> <y>Launch yourself upwards at high heat levels.</c>"
+        },
+		"pyroC2": {
+			"name": "Fueled up",
+			"description": "<b>Blast forward</c> through enemies, dealing <y>30-80% damage</c> depending on heat levels.\n<b>Distance</c> traveled depends on heat levels."
+		},
+        "pyroV": {
+           "name": "Blazeborne",
+           "description": "Launch seeking pellets that <y>deal 180% damage and set enemies on fire each</c>. <y>Release more seeking pellets at higher heat levels, up to 8</c>. Pellets that hit <y>burning</c> enemies give <y>heat</c> and <g>heal</c> you on contact."
+      }
+    },
+	"item": {
+		"glassCup" : {
+			"name" : "Glass cup",
+			"pickup": "Be gentle...",
+			"description": "Getting hurt for more than <r>10% of your current health</c> breaks the cup, leaving a <y>scatter of glass shards</c> at your location. The glass shards deal <y>80% damage each</c> <c_stack>(+10% per stack)</c> and have a <y>10% chance to bleed</c>.",
+			"destination": "019B,\n?????,\nEarth",
+			"date": "6/8/2056",
+			"story": "This is a special one, just for you. You have NO idea how troublesome it is to make AND send such things. Getting a mold, blowin' the glass... all of that stuff.\nI quite REALLY hope you WON'T break it this time. I'm tired of making your special orders.",
+			"priority": "Standard"
+		},
+		"lockpick" : {
+			"name" : "Lockpick",
+			"pickup": "Grants a chance to open chests for free.",
+			"description": "Grants a 8%<c_stack> (+4% per stack)</c> chance to open a chest <y>for free</c>. On fail, the <y>chance lowers by 3%</c>. Can lockpick up to <y>3</c> <c_stack>(+1 per stack)</c> <y>chests per stage</c>.",
+			"destination": "12T6,\nNeaus,\nMars",
+			"date": "11/20/2056",
+			"story": "I am not sure why would you need this, considering your position... well, not my fault if you get caught being up to no good with that lockpick.\nThough, I should warn you - it's old, rusty, and haven't been used that much, so it might break. Don't complain if it does so - forewarned is forearmed.",
+			"priority": "Standard"
+					},
+		"device" : {
+			"name" : "Device",
+			"pickup": "Orbital shooting & exploring companion.",
+			"description": "Gain an orbital device. The device <y>tracks the nearest enemy</c>, before shooting a <y>homing missile</c> that deals <y>300%</c> <c_stack>(+200% per stack)</c> <y>damage</c>. After killing an enemy, the device will scan its body, having a chance to do one of the following:\nGrant a random common, <g>uncommon</c> or <r>legendary</c> item <c_stack>(</c>85%<c_stack>/</c><g>13%</c><c_stack>/<r>2%</c><c_stack>)</c>\n<y>Increase</c> own <y>attack speed</c> by <y>30%</c>\nIncrease own <y>damage</c> against that enemy for the stage by <y>30%</c>.\n\nWhen in a <y>close proximity with the teleporter</c>, the device will emit a <y>sound</c>.",
+			"destination": "K01721,\n[REDACTED],\nUES PRIME",
+			"date": "9/15/2056",
+			"story": "THIS IS FOR YOU, [REDACTED].\nIT BECAME TOO VOLATILE TO WORK WITH, I AM UNABLE TO PROCEED REPAIRING OR CONFIGURING THIS DEVICE - STOP SENDING ME SUCH SAMPLES. IT KEEPS PERFORMING WHAT IT WAS NOT PROGRAMMED TO.\nMOST IMPORTANTLY, [REDACTED], IT SEEMED TO REPLICATE SOME OF THE CARGO - MAKING ALMOST COMPLETELY IDENTICAL COPIES.\nUSE IT HOWEVER YOU WISH, BUT WE DO NOT CONDONE ANY COUNTERFEITING. GOODBYE.",
+			"priority": "<r>Volatile</c>"
+					},
+		"metachronicTrinket" : {
+			"name" : "Metachronic Trinket",
+			"pickup": "Reduced teleporter even time.",
+			"description": "Reduces <r>teleporter event</c> time by <y>10</c> <c_stack>(+5 per stack)</c> <y>seconds</c>.",
+			"destination": "09L1,\nEarth",
+			"date": "12/01/2056",
+			"story": "Take this. Take it away. I don't want to EVER touch it again. I had nightmares, I saw things, and it's all because of this... this thing. I'm not even sure as to what it is, but it's definitely not something I want to keep on me anymore. It was almost like I could see the future, future, future... but also past. And it's a terrifying sensation. Never send me anything again. Never.",
+			"priority": "<r>Volatile</c>"
+					},
+		"tarCandle" : {
+			"name" : "Tar Candle",
+			"pickup": "Leave a trail of slowing tar, that can be ignited by running back and forth.",
+			"description": "Leave a <y>trail of tar</c> behind yourself for <y>3</c> <c_stack>(+3 per stack)</c> <y>seconds</c>, which can be <y>ignited</c> by <b>running back and forth</c>, setting enemies on <y>fire</c> for <y>50%</c> <c_stack>(+50% per stack)</c> <y>damage</c>. Unignited trail of tar <y>slows enemies down by 20%</c>.",
+			"destination": "Placeholder",
+			"date": "Placeholder",
+			"story": "During my time at the place, I've seen lots of stuff - most of them were vases, pots, large statues...and candles. A lot. Usually, I saw them under the statues, all around - most burned out, and some still being lit.\nHowever, I also found this. It seems to be made out of tar and nothing else. Even its rope, while looking like, well, an actual rope - is tar. I tried lighting it up with a lighter, but it immediately fissed out. I'm not even sure what its purpose is, as it just drips the tar everywhere I carry it to. While it should've probably dripped down and 'melted' - its still there, even after all of that tar fell from it.\nI wonder, what else does this place hold for me?",
+			"priority": "Standard"
+					},
+		"cyberneticEye" : {
+			"name" : "Cybernetic Eye",
+			"pickup": "I'm seeing double...",
+			"description": "<b>Interactables</c> have a <y>25%</c> <c_stack>(+15% per stack)</c> <y>chance</c> to have a hologramm duplicate next to them. <r>Teleporter</c> is excluded.",
+			"destination": "Placeholder",
+			"date": "Placeholder",
+			"story": "THIS IS A BREAKTHROUGH!! We tried to come up with something like this for the past few YEARS! AND WE'VE DONE IT! It's easily attachible, or can act as an full replacement for one of the eyes. Best part? ANY! A-N-Y! Species can use it! It basically allows to see what isn't there, but not only that, it also sends impulses straight to your brain that allow you to also FEEL what isn't there! There's SO many possibilities and use cases for this, I can barely contain just how PROUD I am of this thing! I'm sending you one example just so you can try it. And give it to your friends. Let EVERYONE you know try them, and you WILL absolutely WANT to buy more! Consider this a gift, bye-bye!",
+			"priority": "Standard"
+					},
+		"brokenBulb" : {
+			"name" : "Broken Bulb",
+			"pickup": "Surrounds with a periodically fading in and out fearing area.",
+			"description": "Gain a <y>20 meters area</c> that periodically flickers in and out. The area has a <y>10%</c> <c_stack>(+5% per stack)</c> <y>chance</c> to <y>fear</c> enemies within, while also dealing constant <y>10%</c> <c_stack>(+10% per stack)</c> <y>damage</c>.",
+			"destination": "Placeholder",
+			"date": "Placeholder",
+			"story": "i broke it, plese hide, thank",
+			"priority": "Standard"
+					},
+		"bagOfMedicine" : {
+			"name" : "Bag Of Medicine",
+			"pickup": "Hitting enemies drops pills that heal and have various effects.",
+			"description": "<y>15% chance</c> for enemies to drop <b>pills</c> on hit. Pills <g>heal for 4%</c> <c_stack>(+6% per stack)</c> <g>of your maximum health</c>, while also providing one of the following extra effects:\n<y>Fearing</c> close enemies for 3 seconds\n<y>Slowing</c> close enemies by 40%</c>\n<y>Reducing</c> skill cooldowns by 5%\nGranting <y>+30% damage</c> for 3 seconds\nGranting <y>+30% attack speed</c> for 5 seconds\nGranting <b>+15 armor</c> for 6 seconds\nGranting <g>+4 HP/s regeneration</c> for 4 seconds\nGranting <r>+10% 'critical strike' chance</c> for 5 seconds\n\nStacking this item <y>upgrades side-effects</c> of the pills by <y>3%</c> <c_stack> per stack</c>.",
+			"destination": "Placeholder",
+			"date": "Placeholder",
+			"story": "I've sent you a lot of stuff already - armor piercing rounds of .7 caliber, armor plates, defensive stuffs masked as daily-used stuff... all of that. But I forget to send you something as important as medicine.\n And oh boy, what a mess you are with how many diagnoses you have. I had to scour a lot of places for all of those pills, extracts, painkillers, herbs and a loooooot more. Seriously, this bag is bursting with all kind of medicine, that I don't even know if you need half of the stuff I put in.\n But either way, those should help treat wounds and pain whenever you get them, but... stay safe anyways, 'kay? You're just as much flesh as I am.",
+			"priority": "Standard"
+			},
+		"sharpNeedle" : {
+			"name" : "Sharp Needle",
+			"pickup": "Hurts so good.",
+			"description": "<r>Harm yourself for 80% of your maximum health</c>. Harming yourself has a <b>60%</c> chance to drop <y>the last picked up item and a copy of it</c>. <r>Breaks</c> after <b>3</c> uses.",
+			"destination": "Placeholder",
+			"date": "Placeholder",
+			"story": "This is our grandma's needle, she used to knit a lot, remember? Those winter hats, socks, sweaters... good times. And wow, this thing's sharp, and there's a bit of blood on it. Or, rather was a bit of blood until I washed it off. Though, I miss her, and I'm sure you do too. Please take care of this much better than I ever will be able to, I don't want to lose something as reminiscent of her as this, alright?",
+			"priority": "Standard"
+			},
+		"pressurizedCanister" : {
+			"name" : "Pressurized Canister",
+			"pickup": "Boost yourself up into the air on use.",
+			"description": "On use, <b>boost</c> yourself upwards into the air by <b>90 meters</c>.",
+			"destination": "Placeholder",
+			"date": "Placeholder",
+			"story": "Placeholder",
+			"priority": "Standard"
+			},
+		"diplopia" : {
+			"name" : "Diplopia",
+			"pickup": "Duplicates everything in a radius on use. Consumed on use.",
+			"description": "<b>Duplicates</c> everything in a <b>20 meters radius</c> upon use, including <r>enemies</c>, <b>items on the ground</c>, <y>interactables</c>. <r>Consumed on use, appears only once in a run.</c>",
+			"destination": "Placeholder",
+			"date": "Placeholder",
+			"story": "Placeholder",
+			"priority": "Standard"
+					},
+	},
+	"achievement" : {
+        "achievement_seraph" : {
+            "name" : "Call from below",
+            "description" : "Beat the game on Typhoon difficulty as a Nemesis survivor."
+        }
+	}
+}
