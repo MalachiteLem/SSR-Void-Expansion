@@ -4,7 +4,7 @@ HUGE thanks/credits to:
 
 Beebo - Original sprite of Seraph in ssrcord, used as a base for literally every sprite
 
-TRYAGAIN, Azuline, Kris and a few other people (I forgot who exactly, really sorry about that) - mess of a code help
+TRYAGAIN, Azuline, Kris and a few other people (I forgot who exactly, really sorry about that) - coding help. I cooked spaghetti.
 
 TangoKnight, Winslow, Beebo - inspired by their spriting work a lot. Tried to learn rorr spriting based off of their works while working on things other than Seraph. If it wasn't for them, I would've probably never tried my hand at this again
 

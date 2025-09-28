@@ -5,8 +5,8 @@
             "nameUpper": "SERAPH",
             "description": "The <y>Seraph</c> controls the environment with gravity manipulation skills that allow for debuffing and annihilating groups of enemies quickly. <y>Grace Field</c> stops time in areas, allowing for attack chains with <y>Disturbance</c> and <y>Void Breach</c> without putting yourself or your allies at risk.",
             "endQuote": "..and so it left, following the trail for what once was.",
-            "story": "\n				...<b>[TRANSM</c><p>??</c><b>SION RECE</c><p>??</c><b>ED..?]</c>\n\n<b>[AUDIO FILE RECEIVED, TRANSMISSION #?????]</c>\n\n		[Deep, unsteady breathing, followed by a twisted voice] Can anyo- -[UNINTELLIGIBLE]- me? Anyone?\n		I don't know how... -[UNINTELLIGIBLE]- I spent here... I don't even know where this 'here' is... It's all just... [Breath hitching]...\n	It's all just... flying, fractured... islands..? I don't even... know... -[UNINTELLIGIBLE]-... \n		I... have some. Supplies left... but... they won't last for more than... a week... I had... Ha... I- -[Deep inhale, followed by crunch of something under boots]- I had a lot. For... for whole two years... is it two years? Is this how long am I here?	\n		-[UNINTELLIGIBLE]- I- I hear it again, those- those steps, those sounds... its... that thing, again. It... it looks like one of... of ours..? But... Their helmet is cracked, they're... tall. Really, really tall. And... -[UNINTELLIGIBLE]- -[UNINTELLIGIBLE]-... \n		Ha... I... They have long arms, right... right... I... I don't know if... if its after me... or if it saw me but ignored, because... [Sound of something falling with a heavy thud]... because it knows my days are already counted? I... I want to... to reach out and... speak... communicate with it... but I am also so... so... [Deep inhale]... afraid that it might be hostile if I try to... I... I can't...\n\n	I spent too long here... I am hearing sounds and voices... I... Please... someone... -[UNINTELLIGIBLE]-... I... Ha... Haha.. I may be just speaking to myself... I don't... even know if my signal will be enough to... to get received... I just... Haha... Hope someone... will get me out of this place... [Footsteps approaching]...\n That... that thing is approa... approaching...? I-... -[UNINTELLIGIBLE]- -[UNINTELLIGIBLE]-... G-GO<p>??DBY</c>E-\n\n [END OF TRANSMISSION]"
-        },
+            "story": "<p>DRUGS.</c>"
+		},
           "pyro": {
 	"name": "Pyro",
 	"nameUpper": "PYRO",
@@ -116,7 +116,7 @@
 			"description": "Leave a <y>trail of tar</c> behind yourself for <y>3</c> <c_stack>(+3 per stack)</c> <y>seconds</c>, which can be <y>ignited</c> by <b>running back and forth</c>, setting enemies on <y>fire</c> for <y>50%</c> <c_stack>(+50% per stack)</c> <y>damage</c>. Unignited trail of tar <y>slows enemies down by 20%</c>.",
 			"destination": "Placeholder",
 			"date": "Placeholder",
-			"story": "During my time at the place, I've seen lots of stuff - most of them were vases, pots, large statues...and candles. A lot. Usually, I saw them under the statues, all around - most burned out, and some still being lit.\nHowever, I also found this. It seems to be made out of tar and nothing else. Even its rope, while looking like, well, an actual rope - is tar. I tried lighting it up with a lighter, but it immediately fissed out. I'm not even sure what its purpose is, as it just drips the tar everywhere I carry it to. While it should've probably dripped down and 'melted' - its still there, even after all of that tar fell from it.\nI wonder, what else does this place hold for me?",
+			"story": "During my time at the place, I've seen lots of stuff - most of them were vases, pots, beautiful architecture, large statues...and candles. A lot. Usually, I saw them under the statues all around - most burned out, and some still being lit with smoke curling from them.\nHowever, I also found this one - not like the others. It seems to be made out of tar and nothing else. Even its rope, while looking like, well, an actual rope - is tar. I tried lighting it up, but it immediately fissed out. I'm not even sure on what its purpose is, as it just drips the tar everywhere I carry it to. While it should've probably dripped down and 'melted' - its still there, even after all of that tar fell from it.\nI wonder, what else does this place hold for me?",
 			"priority": "Standard"
 					},
 		"cyberneticEye" : {
@@ -125,7 +125,7 @@
 			"description": "<b>Interactables</c> have a <y>25%</c> <c_stack>(+15% per stack)</c> <y>chance</c> to have a hologramm duplicate next to them. <r>Teleporter</c> is excluded.",
 			"destination": "Placeholder",
 			"date": "Placeholder",
-			"story": "THIS IS A BREAKTHROUGH!! We tried to come up with something like this for the past few YEARS! AND WE'VE DONE IT! It's easily attachible, or can act as an full replacement for one of the eyes. Best part? ANY! A-N-Y! Species can use it! It basically allows to see what isn't there, but not only that, it also sends impulses straight to your brain that allow you to also FEEL what isn't there! There's SO many possibilities and use cases for this, I can barely contain just how PROUD I am of this thing! I'm sending you one example just so you can try it. And give it to your friends. Let EVERYONE you know try them, and you WILL absolutely WANT to buy more! Consider this a gift, bye-bye!",
+			"story": "THIS IS A BREAKTHROUGH!! We tried to come up with something like this for the past few YEARS! AND WE'VE DONE IT! It's easily attachible, or can act as an full replacement for one of the eyes. Best part? ANY! A-N-Y! Species can use it! It basically allows to see what isn't there, but not only that, it also sends impulses straight to your brain that allow you to also FEEL what isn't there! There's SO many possibilities and use cases for this - like, thinking REAL hard of someone you want to see, and BAM! They're there! And you can feel their touch! It allllll basically depends on your thoughts and memories. I can barely contain just how PROUD I am of this thing! I'm sending you one example just so you can try it. And give it to your friends. Let EVERYONE you know try them, and you WILL absolutely WANT to buy more! Consider this a gift, bye-bye!",
 			"priority": "Standard"
 					},
 		"brokenBulb" : {
@@ -143,7 +143,7 @@
 			"description": "<y>15% chance</c> for enemies to drop <b>pills</c> on hit. Pills <g>heal for 4%</c> <c_stack>(+6% per stack)</c> <g>of your maximum health</c>, while also providing one of the following extra effects:\n<y>Fearing</c> close enemies for 3 seconds\n<y>Slowing</c> close enemies by 40%</c>\n<y>Reducing</c> skill cooldowns by 5%\nGranting <y>+30% damage</c> for 3 seconds\nGranting <y>+30% attack speed</c> for 5 seconds\nGranting <b>+15 armor</c> for 6 seconds\nGranting <g>+4 HP/s regeneration</c> for 4 seconds\nGranting <r>+10% 'critical strike' chance</c> for 5 seconds\n\nStacking this item <y>upgrades side-effects</c> of the pills by <y>3%</c> <c_stack> per stack</c>.",
 			"destination": "Placeholder",
 			"date": "Placeholder",
-			"story": "I've sent you a lot of stuff already - armor piercing rounds of .7 caliber, armor plates, defensive stuffs masked as daily-used stuff... all of that. But I forget to send you something as important as medicine.\n And oh boy, what a mess you are with how many diagnoses you have. I had to scour a lot of places for all of those pills, extracts, painkillers, herbs and a loooooot more. Seriously, this bag is bursting with all kind of medicine, that I don't even know if you need half of the stuff I put in.\n But either way, those should help treat wounds and pain whenever you get them, but... stay safe anyways, 'kay? You're just as much flesh as I am.",
+			"story": "I've sent you a lot of stuff already - armor piercing rounds of .7 caliber, armor plates, defensive stuff masked as daily-used stuff... all of that. But I forget to send you something as important as medicine.\n And oh boy, what a mess you are with how many diagnoses you have, reading through your papers. I had to scour a lot of places for all of those pills, extracts, painkillers, herbs and a loooooot more. Seriously, this bag is bursting with all kind of medicine, I don't even know if you need half of the stuff I put into it.\n But either way, those should help treat any wounds and pain whenever you get them, but... try to stay safe anyways, 'kay? You're just as much flesh as I am.",
 			"priority": "Standard"
 			},
 		"sharpNeedle" : {
@@ -152,7 +152,7 @@
 			"description": "<r>Harm yourself for 80% of your maximum health</c>. Harming yourself has a <b>60%</c> chance to drop <y>the last picked up item and a copy of it</c>. <r>Breaks</c> after <b>3</c> uses.",
 			"destination": "Placeholder",
 			"date": "Placeholder",
-			"story": "This is our grandma's needle, she used to knit a lot, remember? Those winter hats, socks, sweaters... good times. And wow, this thing's sharp, and there's a bit of blood on it. Or, rather was a bit of blood until I washed it off. Though, I miss her, and I'm sure you do too. Please take care of this much better than I ever will be able to, I don't want to lose something as reminiscent of her as this, alright?",
+			"story": "This is our grandma's needle, she used to knit a lot, remember? Those winter hats, socks, sweaters... good times, mm? And wow, this thing's sharp, and there's a bit of blood on it. Or, rather was a bit of blood until I washed it off.\n\nI miss her, and I'm sure you do too. Please take care of this much better than I ever will be able to, I don't want to lose something as reminiscent of her as this, alright?",
 			"priority": "Standard"
 			},
 		"pressurizedCanister" : {
@@ -172,12 +172,48 @@
 			"date": "Placeholder",
 			"story": "Placeholder",
 			"priority": "Standard"
-					},
+					}
 	},
 	"achievement" : {
         "achievement_seraph" : {
             "name" : "Call from below",
             "description" : "Beat the game on Typhoon difficulty as a Nemesis survivor."
-        }
+        },
+	"achievement_seraph_zalt" : {
+            "name" : "Shattered realities",
+            "description" : "As Seraph, catch 25 enemies in one explosion of Shatter."
+		},
+	"achievement_seraph_calt" : {
+            "name" : "Imprisonment",
+            "description" : "As Seraph, beat the Providence trial 'Roles swapped'. Alternatively, obtain 400 items in one run."
+		},
+	"achievement_seraph_valt" : {
+            "name" : "Where you belong",
+            "description" : "As Seraph, beat the Providence trial 'Call of the Void'. Alternatively, visit 40 stages in one run."
+		},
+	"achievement_seraph_golden" : {
+            "name" : "Voided perfection",
+            "description" : "As Seraph, beat the Providence trial 'Vengeance' flawlessly."
+		},
+	"achievement_seraph_provi" : {
+            "name" : "Seraph's Isolation",
+            "description" : "Complete the final Providence Trial as Seraph."
+		},
+	"achievement_seraph_prism" : {
+            "name" : "Strange Prism: Ancestry",
+            "description" : "Found this prism in the world."
+		},
+	"achievement_seraph_prism2" : {
+            "name" : "Strange Prism: Crystalline",
+            "description" : "Found this prism in the world."
+		},
+	"achievement_seraph_item_voidshackles" : {
+            "name" : "The Cycle of Imprisonment",
+            "description" : "As Seraph, find and defeat the chained creature."
+		},
+	"achievement_seraph_item_accelerationmechanism" : {
+            "name" : "Going Fast Recommended",
+            "description" : "As Seraph, reach 400% movement speed, and create a worryingly fast breach."
+		}
 	}
 }
