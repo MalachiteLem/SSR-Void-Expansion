@@ -46,7 +46,7 @@
 	local sprite_fall			= Resources.sprite_load(NAMESPACE, "SeraphFall", path.combine(SPRITE_PATH, "fall.png"), 1, 18, 29)
 	local sprite_fall_half		= Resources.sprite_load(NAMESPACE, "SeraphFallHalf", path.combine(SPRITE_PATH, "fallHalf.png"), 1, 18, 29)
 	local sprite_climb			= Resources.sprite_load(NAMESPACE, "SeraphClimb", path.combine(SPRITE_PATH, "climb.png"), 8, 19, 33)
-	local sprite_death			= Resources.sprite_load(NAMESPACE, "SeraphDeath", path.combine(SPRITE_PATH, "death.png"), 21, 24, 47)
+	local sprite_death			= Resources.sprite_load(NAMESPACE, "SeraphDeath", path.combine(SPRITE_PATH, "death.png"), 21, 24, 54)
 	local sprite_decoy			= Resources.sprite_load(NAMESPACE, "SeraphDecoy", path.combine(SPRITE_PATH, "decoy.png"), 1, 17, 16)
 	
 	-- Load drone sprites
@@ -122,8 +122,8 @@
 			if attack_tag then return end
 			if hit_info.damage > 0.8 then -- If the damage is above 80%, do the thing
 			actor:buff_remove(debuffShatter, 1)
-		local shatterExplosion = attacker:fire_explosion(actor.x, actor.y, 120, 120, 4, nil, sprite_seraphSparks3, true).attack_info -- Fires the sized explosion at the position of enemy
-			attack_info.__ssr_seraph_explosion = ATTACK_TAG_IGNORED_BY_SHATTER -- Should (theoretically) prevent shatter explosions from proccing themselves
+		local shatterExplosion = attacker:fire_explosion(actor.x, actor.y, 120, 120, 4, nil, sprite_seraphSparks3, true) -- Fires the sized explosion at the position of enemy
+			shatterExplosion.__ssr_seraph_explosion = ATTACK_TAG_IGNORED_BY_SHATTER -- Should (theoretically) prevent shatter explosions from proccing themselves
 			if can_proc == nil then can_proc = true end
 		actor:sound_play(sound_shoot2_3, 0.6, 1 + math.random() * 0.4)
 			if not GM.actor_is_boss(actor) then
@@ -551,7 +551,6 @@ Callback.add(Callback.TYPE.onAttackHit, "SeraphSecondaryCollide", function(hit_i
 	if attack_tag == ATTACK_TAG_APPLY_SHATTER then
 		if victim:buff_stack_count(debuffShatter) == 0 then
 				victim:buff_apply(debuffShatter, 4 * 60, 1)
-				-- print("Applied 'shatter' to enemy") this was used for debugging if shit went wrong, but now that this is finished it's redundant!
 		else
 				victim:set_buff_time(debuffShatter, 4 * 60)
 				end
@@ -577,6 +576,7 @@ end
 			if gm._mod_net_isHost() then
 				local attack = inst.parent:fire_direct(actor, 0, nil, inst.direction, inst.x, inst.y, false).attack_info
 							if can_proc == nil then can_proc = false end
+				attack.max_hit_number = 1 -- Sets it so that only 1 enemy an get hit with it, but it doesn't work (??????)
 					attack.__ssr_seraph_secondary = ATTACK_TAG_APPLY_SHATTER
 					inst:destroy()
 				attack.climb = 10000
@@ -586,8 +586,7 @@ end
 	end
 end)
 
-	-- Disturbance
-	
+	-- Disturbance (Utility)
 	
 	seraphUtility.sprite = sprite_skills
 	seraphUtility.subimage = 3
@@ -667,37 +666,53 @@ end)
 				local bash = actor:fire_explosion(actor.x, actor.y, 280, 20, 0, nil, false, false).attack_info
 							if can_proc == nil then can_proc = false end
 					bash.climb = 1000000
+					bash:set_stun(0.15)
 					bash.__ssr_seraph_utility_bash = ATTACK_UTILITY_BASH
-							end
-					end
+				end
+			end
 		actor:screen_shake(4)
 	    actor:sound_play(sound_shoot3_2, 0.6, 1 + math.random() * 0.2)
-        data.fired = 1
+		data.fired = 1
 	end
 end)
 
-Callback.add(Callback.TYPE.onAttackHit, "SeraphUtilityPull", function(hit_info)
-	local attack_tag = hit_info.attack_info.__ssr_seraph_utility_pull
+-- Holy shit two cakes that are called pull and bash
+
+	Callback.add(Callback.TYPE.onAttackHit, "SeraphUtilityPull", function(hit_info)
+		local attack_tag = hit_info.attack_info.__ssr_seraph_utility_pull
 	if attack_tag then
 		local victim = hit_info.target
 		local actor = hit_info.parent
-		local hit = hit_info.attack_info.hit_number
 	if attack_tag == ATTACK_UTILITY_PULL then
-			victim.pVspeed = -8
+		actor.direction = actor:skill_util_facing_direction() -- Get the direction of Seraph player so we can pull them + enemies correctly
+			if not GM.actor_is_boss(victim) and GM.actor_is_classic(victim) then
+					victim.pVspeed = victim.pVspeed - 8.5
+			end
 			
 							local function actualPull()
-					victim.pVspeed = 3.5
 					local pullDamager = actor:fire_direct(victim, 1.1, nil, victim.x, victim.y, nil, true).attack_info
-					pullDamager.climb = -20
-			
-						pullDamager.knockback = 4 * (actor.pHspeed * 0.8 + 0.4)
-						pullDamager.knockback_direction = -actor.image_xscale
+						pullDamager.climb = -18
+
+					-- Code for when the player is facing <---
+						-- Pull enemies to the right
+					if actor.direction == 180 then  															-- print("Facing left") 
+						pullDamager.knockback = 14
+						pullDamager.knockback_dir = 1 -- (1 = right)
+						-- Pull Seraph to the left
+						  actor.pHspeed = actor.pVspeed + 14
+					end
+					-- Code for when the player is facing --->
+						-- Pull enemies to the left
+					if actor.direction == 0 then  																-- print("Facing right") 
+						pullDamager.knockback = 14
+						pullDamager.knockback_dir = -1 -- (-1 = left)
+						-- Pull Seraph to the right
+						actor.pHspeed = actor.pVspeed + (-14)
+					end
 				end
 				
-						
-
 				Alarm.create(actualPull, 0.4 * 60)
-		
+				
 			end
 		end
 	end)
@@ -708,16 +723,22 @@ Callback.add(Callback.TYPE.onAttackHit, "SeraphUtilityBash", function(hit_info)
 		local victim = hit_info.target
 		local actor = hit_info.parent
 	if attack_tag == ATTACK_UTILITY_BASH then
-				victim.pVspeed = -12
+		if not GM.actor_is_boss(victim) and GM.actor_is_classic(victim) then
+				victim.pVspeed = victim.pVspeed - 13
 				
 				local function actualBash(print, die)
-					victim.pVspeed = 20
+				if not GM.actor_is_boss(victim) and GM.actor_is_classic(victim) then -- No, you can't throw a collossus up into stratosphere.
+					victim.fallImmunity = true -- Makes the enemy invulnerable to fall damage to prevent it from occuring with bash, due to how quickly enemies hit the ground. Doesn't work, too (????)
+					victim.pVspeed = victim.pVspeed + 130
+					end
 					local bashDamager = actor:fire_direct(victim, 3.1, nil, victim.x, victim.y, nil, true).attack_info
-					bashDamager.climb = -120
-					bashDamager:set_stun(0.6)
-				end
+					bashDamager.climb = -30
+					bashDamager:set_stun(0.65)
+						
 
-				Alarm.create(actualBash, 25, print, die)
+					end
+				Alarm.create(actualBash, 30, print, die)
+				end
 			end
 		end
 	end)
