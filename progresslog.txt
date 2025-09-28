@@ -30,3 +30,14 @@
 	-Fixed Shatter proccing itself (you hit one shattered enemy in proximity to 4 others, without the shatter debuff - it would summon 5 explosions. Fixed now)
 	-RAAAHHHHH fixed that DUMB SHITASS BUG that caused the non-damagers/utility attacks to trigger procs (bleed, atgs, etc with 0 damage) - now orb, utility pull
 	and utility bash no longer do that dumb sick shit!!!! (i was blind and didn't see the can_proc property for fire_explosion and fire_direct)
+28.09.2025 - The great code unshittification and rewrite 2, and my code was spaghetti
+	-Half of the day no progress, temperature + bad headache
+	-Started attempts on adjusting the animations to match the skills and vice versa
+	-Started attempt at rewriting how the orb works so that utility will be able to push it left/right (pull) and down (bash)
+	-Fixed a bug with shatter/field debuffs where if a wandering vagrant/cremator/lem cavalry (any enemy that used projectiles as 'entities', really) would have their
+	attacks hanging in the air forever. This is no longer the case.
+	-Added much more comments
+	-Refined the code to look less clunky
+	-Shatter debuff now procs properly with equipment and other items
+	-All animations now work properly
+	-Seraph now properly slides with their primary, no longer getting their speed reduced when attacking (fixed a bug tldr)

@@ -17,7 +17,7 @@
 	-- Load the sprites for buff icons
 	
 	local buff_spriteShatter			=Resources.sprite_load(NAMESPACE, "BuffShatter", path.combine(PATH, "Sprites/Buffs/shatter.png"), 1, 9, 8)
-	local buff_spriteField			=Resources.sprite_load(NAMESPACE, "BuffField", path.combine(PATH, "Sprites/Buffs/field.png"), 1, 6, 6)
+	local buff_spriteField			=Resources.sprite_load(NAMESPACE, "BuffField", path.combine(PATH, "Sprites/Buffs/field.png"), 1, 6, -8)
 	local buff_spriteFieldS			=Resources.sprite_load(NAMESPACE, "BuffFieldS", path.combine(PATH, "Sprites/Buffs/fieldS.png"), 1, 6, 6)
 	
 	-- load the 5 palletes, including default, ocean, foe, friend and golden. Later golden palette will become a provi trial unlock, and its place will be taken by Faded palette
@@ -407,13 +407,13 @@ end)
 	-- Seraph's grasp (Primary)
 	seraphPrimary.sprite = sprite_skills -- Sprite used
 	seraphPrimary.subimage = 0 -- The subimage. Starting skill (the leftmost) will always be 1. If you have a survivor with basic loadout and scepter skill, its gonna be 0/1/2/3/4 subimages respectively for primary/secondary/utility/special/scepter special.
-	seraphPrimary.cooldown = 65 -- Set the cooldown (i think) in frames
+	seraphPrimary.cooldown = 75 -- Set the cooldown (i think) in frames
 	seraphPrimary.damage = 1.4 -- Set the damage. 0.1 would be 10%, 1.4 is 140%
 	seraphPrimary.require_key_press = false -- Can you hold the skill button down to use it?
 	seraphPrimary.is_primary = true -- Is it a primary skill?
 	seraphPrimary.disable_aim_stall = true -- (Idk what this does)
 	seraphPrimary.does_change_activity_state = true -- Does it have own state?
-	seraphPrimary.hold_facing_direction = true -- Does it force a direction to be the same? (See Bandit's primary)
+	seraphPrimary.hold_facing_direction = false -- Does it force a direction to be the same? (See Bandit's primary)
 	seraphPrimary.required_interrupt_priority = State.ACTOR_STATE_INTERRUPT_PRIORITY.any -- The intewrrupt priority for the skill
 
 	local stateseraphPrimary = State.new(NAMESPACE, "seraphPrimary")
@@ -425,15 +425,16 @@ end)
 
 	stateseraphPrimary:clear_callbacks()
 	stateseraphPrimary:onEnter(function(actor, data)
-	actor.image_index2 = 0
+	actor.image_index = 0
 	data.fired = 0
-	data.currentAnim = ((data.currentAnim or 1) + 1) % 2
+	data.currentAnim = 0
 	actor:skill_util_strafe_and_slide_init()
 	data.sprite = sprite_shoot1
 end)
 	stateseraphPrimary:onStep(function(actor, data)
-    actor:actor_animation_set(sprite_shoot1, 0.19 * actor.attack_speed)
 	actor:skill_util_fix_hspeed()
+    actor:actor_animation_set(sprite_shoot1, 0.19)
+	
 	actor:skill_util_strafe_and_slide(1)
 	actor:skill_util_exit_state_on_anim_end()
 	
@@ -450,6 +451,9 @@ end)
 				if can_proc == nil then can_proc = true end
 		lasers.climb = 10000
 		lasers.__ssr_seraph_primary = ATTACK_TAG_SERAPH_PRIMARY
+				actor:screen_shake(4)
+				actor:sound_play(sound_shoot1, 0.6, 1 + math.random() * 0.3)
+				data.fired = 1
 			end
 		end
 	end
@@ -466,10 +470,6 @@ end)
 			end
 		end
 	end)
-	
-		actor:screen_shake(4)
-	    actor:sound_play(sound_shoot1, 0.6, 1 + math.random() * 0.2)
-        data.fired = 1
 	end
 end)
 	
@@ -513,7 +513,7 @@ end)
 	stateseraphSecondary:onEnter(function(actor, data)
 	actor.image_index = 0
 	data.fired = 0
-	data.currentAnim = ((data.currentAnim or 1) + 1) % 2
+	data.currentAnim = 0
 	actor:skill_util_strafe_and_slide_init()
 	data.sprite = sprite_shoot1
 	data.created = nil
@@ -521,7 +521,7 @@ end)
 end)
 	stateseraphSecondary:onStep(function(actor, data)
 	actor:skill_util_fix_hspeed()
-    actor:actor_animation_set(sprite_shoot1, 0.19)
+    actor:actor_animation_set(sprite_shoot2, 0.19)
 	
 	actor:skill_util_strafe_and_slide(1)
 	actor:skill_util_exit_state_on_anim_end()
@@ -590,7 +590,7 @@ end)
 	
 	seraphUtility.sprite = sprite_skills
 	seraphUtility.subimage = 3
-	seraphUtility.cooldown = 5.5 * 60
+	seraphUtility.cooldown = 6.5 * 60
 	seraphUtility.damage = 1.1
 	seraphUtility.require_key_press = true
 	seraphUtility.does_change_activity_state = true
@@ -611,9 +611,9 @@ end)
 
 	stateseraphUtilityPull:clear_callbacks()
 	stateseraphUtilityPull:onEnter(function(actor, data)
-	actor.image_index2 = 0
+	actor.image_index = 0
 	data.fired = 0
-	data.currentAnim = ((data.currentAnim or 1) + 1) % 2
+	data.currentAnim = 0
 	actor:skill_util_strafe_and_slide_init()
 	data.sprite = sprite_shoot3_2
 end)
@@ -644,9 +644,9 @@ end)
 
 	stateseraphUtilityBash:clear_callbacks()
 	stateseraphUtilityBash:onEnter(function(actor, data)
-	actor.image_index2 = 0
+	actor.image_index = 0
 	data.fired = 0
-	data.currentAnim = ((data.currentAnim or 1) + 1) % 2
+	data.currentAnim = 0
 	actor:skill_util_strafe_and_slide_init()
 	data.sprite = sprite_shoot3_1
 end)
@@ -676,7 +676,7 @@ end)
 	end
 end)
 
--- Holy shit two cakes that are called pull and bash
+		-- Holy shit two cakes that are called pull and bash
 
 	Callback.add(Callback.TYPE.onAttackHit, "SeraphUtilityPull", function(hit_info)
 		local attack_tag = hit_info.attack_info.__ssr_seraph_utility_pull
@@ -717,8 +717,8 @@ end)
 		end
 	end)
 
-Callback.add(Callback.TYPE.onAttackHit, "SeraphUtilityBash", function(hit_info)
-	local attack_tag = hit_info.attack_info.__ssr_seraph_utility_bash
+	Callback.add(Callback.TYPE.onAttackHit, "SeraphUtilityBash", function(hit_info)
+		local attack_tag = hit_info.attack_info.__ssr_seraph_utility_bash
 	if attack_tag then
 		local victim = hit_info.target
 		local actor = hit_info.parent
@@ -742,12 +742,29 @@ Callback.add(Callback.TYPE.onAttackHit, "SeraphUtilityBash", function(hit_info)
 			end
 		end
 	end)
+	
+	-- Setup the nonsense to prevent fall damage from the bash's functions
+	
+		gm.pre_script_hook(gm.constants.actor_phy_on_landed, function(self, other, result, args)
+				local real_self = Instance.wrap(self)
+		if not gm.bool(self.invincible) and real_self.fallImmunity then
+			self.invincible = 1
+			guarded = true
+		real_self.fallImmunity = false
+    end
+end)
 
+		gm.post_script_hook(gm.constants.actor_phy_on_landed, function(self, other, result, args)
+				if guarded then
+					self.invincible = 0
+				guarded = false
+    end
+end)
 
 	-- Grace field
 	seraphSpecial.sprite = sprite_skills
 	seraphSpecial.subimage = 5
-	seraphSpecial.cooldown = 11 * 60
+	seraphSpecial.cooldown = 16 * 60
 	seraphSpecial.damage = 0
 	seraphSpecial.require_key_press = true
 	seraphSpecial.does_change_activity_state = true
@@ -765,9 +782,9 @@ end)
 
 	stateseraphSpecial:clear_callbacks()
 	stateseraphSpecial:onEnter(function(actor, data)
-	actor.image_index2 = 0
+	actor.image_index = 0
 	data.fired = 0
-	data.currentAnim = ((data.currentAnim or 1) + 1) % 2
+	data.currentAnim = 0
 	actor:skill_util_strafe_and_slide_init()
 	data.sprite = sprite_shoot4
 end)
@@ -817,7 +834,7 @@ end)
 	-- Grace field boosted
 	seraphSpecialUpgraded.sprite = sprite_skills
 	seraphSpecialUpgraded.subimage = 6
-	seraphSpecialUpgraded.cooldown = 11 * 60
+	seraphSpecialUpgraded.cooldown = 16 * 60
 	seraphSpecialUpgraded.damage = 0
 	seraphSpecialUpgraded.require_key_press = true
 	seraphSpecialUpgraded.does_change_activity_state = true
@@ -835,9 +852,9 @@ end)
 
 	stateseraphSpecialUpgraded:clear_callbacks()
 	stateseraphSpecialUpgraded:onEnter(function(actor, data)
-	actor.image_index2 = 0
+	actor.image_index = 0
 	data.fired = 0
-	data.currentAnim = ((data.currentAnim or 1) + 1) % 2
+	data.currentAnim = 0
 	actor:skill_util_strafe_and_slide_init()
 	data.sprite = sprite_shoot5
 end)
