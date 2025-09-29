@@ -2,7 +2,7 @@
 	-- The return of mallem modding
 	-- Seraph rorr TODAY!!
 	
-	-- Thanks to kris, azulineskye, tryagain, miguelito for all of the help with code throughout times!
+	-- Thanks to kris, azulineskye, tryagain, miguelito and a handful for all of the help with code throughout times!
 	-- Thanks to Beebo for the prototype of seraph's rorr design in ssrcord, all of the sprites made for this reboot of fan port are based off of theirs!
 	-- Thanks to TangoKnight, Beebo and Winslow, as their rorr art was used by me as a reference way too many times to count!
 	-- Thanks to Fox, Goobessa, Nilzer, qwp, Wertus for the motivational/kind words during my frustrations with this mess of a code!
@@ -22,6 +22,8 @@
 	
 	-- load the 5 palletes, including default, ocean, foe, friend and golden. Later golden palette will become a provi trial unlock, and its place will be taken by Faded palette
 	local sprite_palette				=Resources.sprite_load(NAMESPACE, "SeraphPalette", path.combine(SPRITE_PATH, "palette.png"))
+	
+	
 	
 	-- Load everything for menus, UIs and CSS
 	
@@ -278,6 +280,9 @@ end)
 		climb = sprite_climb,
 		death = sprite_death,
 		decoy = sprite_decoy,	
+		
+		drone_idle = sprite_drone_idle,
+		drone_shoot = sprite_drone_shoot,
 	})
 	
 	-- Setting cape's position + primary color for the survivor (the one used in stats)
@@ -443,7 +448,6 @@ end)
         local damage = actor:skill_get_damage(seraphPrimary)
 		local dir = actor:skill_util_facing_direction()
         
-        if actor:is_authority() then
         if not actor:skill_util_update_heaven_cracker(actor, damage) then
            local buff_shadow_clone = Buff.find("ror", "shadowClone")
         for i=0, GM.get_buff_stack(actor, buff_shadow_clone) do
@@ -455,7 +459,6 @@ end)
 				actor:sound_play(sound_shoot1, 0.6, 1 + math.random() * 0.3)
 				data.fired = 1
 			end
-		end
 	end
 	
 	Callback.add(Callback.TYPE.onAttackHit, "SeraphPrimaryOnHit", function(hit_info)
@@ -545,6 +548,7 @@ end)
 	-- This sets up the thing for applying shatter debuff
 	
 Callback.add(Callback.TYPE.onAttackHit, "SeraphSecondaryCollide", function(hit_info)
+
 	local attack_tag = hit_info.attack_info.__ssr_seraph_secondary
 	if attack_tag then
 		local victim = hit_info.target
@@ -552,7 +556,7 @@ Callback.add(Callback.TYPE.onAttackHit, "SeraphSecondaryCollide", function(hit_i
 		if victim:buff_stack_count(debuffShatter) == 0 then
 				victim:buff_apply(debuffShatter, 4 * 60, 1)
 		else
-				victim:set_buff_time(debuffShatter, 4 * 60)
+				GM.set_buff_time_nosync(victimt, debuffShatter, 4 * 60)
 				end
 			end
 		end
@@ -581,7 +585,7 @@ end
 					inst:destroy()
 				attack.climb = 10000
 			end
-				inst:sound_play(sound_shoot2_2, 0.6, 1 + math.random() * 0.2)
+				actor:sound_play(sound_shoot2_2, 0.6, 1 + math.random() * 0.2)
 		end
 	end
 end)
@@ -624,10 +628,8 @@ end)
 	actor:skill_util_exit_state_on_anim_end()
 	
    if data.fired == 0 and actor.image_index >= 0 then
-
 		local dir = actor:skill_util_facing_direction()
         
-        if actor:is_authority() then
                 local buff_shadow_clone = Buff.find("ror", "shadowClone")
                 for i=0, GM.get_buff_stack(actor, buff_shadow_clone) do
 				local pull = actor:fire_explosion(actor.x + actor.image_xscale * 180, actor.y, 320, 20, 0, nil, false, false).attack_info
@@ -635,10 +637,10 @@ end)
 						pull.climb = 1000000
 					pull.__ssr_seraph_utility_pull = ATTACK_UTILITY_PULL
 							end
-					end
 		actor:screen_shake(3)
 	    actor:sound_play(sound_shoot3_2, 0.6, 1 + math.random() * 0.2)
         data.fired = 1
+		
 	end
 end)
 
@@ -652,7 +654,7 @@ end)
 end)
 	stateseraphUtilityBash:onStep(function(actor, data)
 	actor:skill_util_fix_hspeed()
-    actor:actor_animation_set(sprite_shoot3_1, 0.19)
+    actor:actor_animation_set(sprite_shoot3_1, 0.34)
 	actor:skill_util_strafe_and_slide(1)
 	actor:skill_util_exit_state_on_anim_end()
 	
@@ -660,7 +662,6 @@ end)
 
 		local dir = actor:skill_util_facing_direction()
         
-        if actor:is_authority() then
                 local buff_shadow_clone = Buff.find("ror", "shadowClone")
                 for i=0, GM.get_buff_stack(actor, buff_shadow_clone) do
 				local bash = actor:fire_explosion(actor.x, actor.y, 280, 20, 0, nil, false, false).attack_info
@@ -669,8 +670,7 @@ end)
 					bash:set_stun(0.15)
 					bash.__ssr_seraph_utility_bash = ATTACK_UTILITY_BASH
 				end
-			end
-		actor:screen_shake(4)
+		actor:screen_shake(3)
 	    actor:sound_play(sound_shoot3_2, 0.6, 1 + math.random() * 0.2)
 		data.fired = 1
 	end
@@ -686,7 +686,7 @@ end)
 	if attack_tag == ATTACK_UTILITY_PULL then
 		actor.direction = actor:skill_util_facing_direction() -- Get the direction of Seraph player so we can pull them + enemies correctly
 			if not GM.actor_is_boss(victim) and GM.actor_is_classic(victim) then
-					victim.pVspeed = victim.pVspeed - 8.5
+					victim.pVspeed = victim.pVspeed - 8.8
 			end
 			
 							local function actualPull()
@@ -703,7 +703,7 @@ end)
 					end
 					-- Code for when the player is facing --->
 						-- Pull enemies to the left
-					if actor.direction == 0 then  																-- print("Facing right") 
+					if actor.direction == 0 then  																-- print("Facing right")
 						pullDamager.knockback = 14
 						pullDamager.knockback_dir = -1 -- (-1 = left)
 						-- Pull Seraph to the right
@@ -711,8 +711,7 @@ end)
 					end
 				end
 				
-				Alarm.create(actualPull, 0.4 * 60)
-				
+				Alarm.create(actualPull, 35)
 			end
 		end
 	end)
@@ -726,22 +725,19 @@ end)
 		if not GM.actor_is_boss(victim) and GM.actor_is_classic(victim) then
 				victim.pVspeed = victim.pVspeed - 13
 				
-				local function actualBash(print, die)
+				local function actualBash()
 				if not GM.actor_is_boss(victim) and GM.actor_is_classic(victim) then -- No, you can't throw a collossus up into stratosphere.
-					victim.fallImmunity = true -- Makes the enemy invulnerable to fall damage to prevent it from occuring with bash, due to how quickly enemies hit the ground. Doesn't work, too (????)
 					victim.pVspeed = victim.pVspeed + 130
 					end
 					local bashDamager = actor:fire_direct(victim, 3.1, nil, victim.x, victim.y, nil, true).attack_info
 					bashDamager.climb = -30
 					bashDamager:set_stun(0.65)
-						
-
 					end
-				Alarm.create(actualBash, 30, print, die)
-				end
+				Alarm.create(actualBash, 40)
 			end
 		end
-	end)
+	end
+end)
 	
 	-- Setup the nonsense to prevent fall damage from the bash's functions
 	
@@ -796,10 +792,10 @@ end)
 	
 	   if data.fired == 0 and actor.image_index >= 0 then
 				local self = objFieldD:create(actor.x, actor.y)
-									self.parent = -4
-									self.team = actor.team
-									actor:sound_play(sound_shoot4, 0.6, 1 + math.random() * 0.2)
-									self.life = 240
+							self.parent = actor
+						self.team = actor.team
+					actor:sound_play(sound_shoot4, 0.6, 1 + math.random() * 0.2)
+				self.life = 240
 			end
 	data.fired = 1
 end)
@@ -814,13 +810,14 @@ end)
 					local targets = List.wrap(self:find_characters_circle(self.x, self.y, FIELD_RADIUS, false, 3))
 							for _, target in ipairs (targets) do
 							if target:buff_stack_count(debuffField) == 0 then
-									target:buff_apply(debuffField, 10, 1)
+									target:buff_apply(debuffField, 15, 1)
 							else
-									GM.set_buff_time_nosync(target, debuffField, 10)
-				end
+									target:buff_apply(debuffField, 15)
 			end
 		end
+	end
 end)
+	
 		objFieldD:onDraw(function(self)
 		gm.draw_set_colour(Color.PURPLE)
 		gm.gpu_set_blendmode(1)
@@ -873,7 +870,7 @@ end)
 			end
 	data.fired = 1
 end)
-		objFieldS:onStep(function(self)
+			objFieldS:onStep(function(self)
 		
 					self.life = self.life - 1				
 		if self.life < 0 then
@@ -884,17 +881,17 @@ end)
 					local targets = List.wrap(self:find_characters_circle(self.x, self.y, FIELD_RADIUS_BOOSTED, false, 3))
 							for _, target in ipairs (targets) do
 							if target:buff_stack_count(debuffField) == 0 then
-									target:buff_apply(debuffField, 10, 1)
+									target:buff_apply(debuffField, 15, 1)
 							else
-									GM.set_buff_time_nosync(target, debuffField, 10)
+									target:buff_apply(debuffFieldS, 15)
 							end
 							if target.team ~= 1 then
 								if target:buff_stack_count(debuffShatter) == 0 then
-									target:buff_apply(debuffShatter, 10, 1)
+									target:buff_apply(debuffShatter, 15, 1)
 							else
-									GM.set_buff_time_nosync(target, debuffShatter, 10)
-							end
+									target:buff_apply(debuffFieldS, 15)
 				end
+			end
 		end
 	end
 end)

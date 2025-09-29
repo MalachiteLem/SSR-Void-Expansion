@@ -41,3 +41,22 @@
 	-Shatter debuff now procs properly with equipment and other items
 	-All animations now work properly
 	-Seraph now properly slides with their primary, no longer getting their speed reduced when attacking (fixed a bug tldr)
+	-Removed the logbook since I didn't like it at alllllll in any way
+	-Refined the utility code, making the bash drop enemies more sharply downwards, and pull pull enemies more sharply. Removed redundant arguments like printing and text
+	within the alarms used by utility code
+	-Added a block of code to prevent fall damage occuring when bashing enemies downwards
+	-Adjusted animation span and alarm wait to match each other
+	-Changed debuffFielD (no scepter field) to debuffFieldS (scepter field) in the upgraded form of grace field, so that it works properly
+	-First multiplayer playtest:
+	   Testers: Malachite lem, Fox, Flashi
+	Results:
+		-Drone sprite didn't work (forgot to define, now fixed)
+		-Sounds aren't synced across clients (????)
+		-Orbs fired by client don't disappear after hitting the enemy, and stay purely visual (need to network the instance destroy)
+		-Alarms used by utility create an error in the console, function nomrally otherwise
+		-Prevention of fall damage by utility bash doesn't work at all when in an online co-op run
+29.09.2025 - The respriting and reassembly (FORCED_REASSEMBLY REFERENCE IN MY CODE???)
+	-Started work on refining walk, idle, walk back cycles to be more pleasant
+	-Started work on respriting the entirety of climb, fall and jump cycles
+	(All other animations are more than fine, except maybe shoot_2, which has to be a bit more distinct from shoot_1)
+	-
