@@ -202,11 +202,11 @@ end)
 	
 	debuffField:onStatRecalc(function(actor)
 	if actor.team ~= 2 then
-	utilityCooldownReduction = actor:override_default_skill_cooldown(2, 2)
+	utilityCooldownReduction = actor:override_default_skill_cooldown(2, 2.5 * 60)
 		end
 	end)
 	
-	-- Field debuff (scepter) for enemies (they get stunned for 1.2 seconds after duration expires + constant shatter debuff)
+	-- Field debuff (scepter) for enemies
 	
 	debuffFieldS:onPostStep(function(actor)
 	if actor.team ~= 1 then
@@ -240,8 +240,8 @@ end)
 	
 	debuffFieldS:onStatRecalc(function(actor)
 	if actor.team ~= 2 then
-	utilityCooldownReduction = actor:override_default_skill_cooldown(2, 2)
-	secondaryCooldownReduction = actor:override_default_skill_cooldown(1, 2)
+	utilityCooldownReduction = actor:override_default_skill_cooldown(2, 2 * 60)
+	secondaryCooldownReduction = actor:override_default_skill_cooldown(1, 2.5 * 60)
 	actor.attack_speed = actor.attack_speed + 0.15
 	actor.critical_chance = actor.critical_chance + 0.10
 	actor.damage = actor.damage + 0.25
@@ -284,7 +284,7 @@ end)
 		drone_idle = sprite_drone_idle,
 		drone_shoot = sprite_drone_shoot,
 	})
-	
+		
 	-- Setting cape's position + primary color for the survivor (the one used in stats)
 	
 	seraph:set_cape_offset(1, -9, 0, -14)
@@ -301,7 +301,6 @@ end)
 	-- seraph.select_sound_id = sound_select --Turned off until the CSS is remade
 	
 	-- Sets the palettes
-	
 	seraph:set_palettes(sprite_palette, sprite_palette, sprite_palette)
 	
 	-- Add skins
@@ -372,8 +371,8 @@ end)
 	
 	-- Add a hitbox mask so the sprite matches the hitbox
 	actor.mask_index = seraph_mask
-	
-	end)
+end)
+
 
 	-- Create skills
 	local seraphPrimary = seraph:get_primary()
@@ -396,7 +395,6 @@ end)
 	
 	seraphAltSpecial:set_skill_upgrade(seraphSpecialAltUpgraded)
 	
-	
 	-- Assign anims for each skill.
     seraphPrimary:set_skill_animation(shoot1)
 	seraphSecondary:set_skill_animation(shoot2)
@@ -412,13 +410,13 @@ end)
 	-- Seraph's grasp (Primary)
 	seraphPrimary.sprite = sprite_skills -- Sprite used
 	seraphPrimary.subimage = 0 -- The subimage. Starting skill (the leftmost) will always be 1. If you have a survivor with basic loadout and scepter skill, its gonna be 0/1/2/3/4 subimages respectively for primary/secondary/utility/special/scepter special.
-	seraphPrimary.cooldown = 75 -- Set the cooldown (i think) in frames
+	seraphPrimary.cooldown = 58 -- Set the cooldown (i think) in frames
 	seraphPrimary.damage = 1.4 -- Set the damage. 0.1 would be 10%, 1.4 is 140%
 	seraphPrimary.require_key_press = false -- Can you hold the skill button down to use it?
 	seraphPrimary.is_primary = true -- Is it a primary skill?
 	seraphPrimary.disable_aim_stall = true -- (Idk what this does)
-	seraphPrimary.does_change_activity_state = true -- Does it have own state?
-	seraphPrimary.hold_facing_direction = false -- Does it force a direction to be the same? (See Bandit's primary)
+	seraphPrimary.does_change_activity_state = true -- Does it change the activity state?
+	seraphPrimary.hold_facing_direction = false -- Does the skill lock your facing direction?
 	seraphPrimary.required_interrupt_priority = State.ACTOR_STATE_INTERRUPT_PRIORITY.any -- The intewrrupt priority for the skill
 
 	local stateseraphPrimary = State.new(NAMESPACE, "seraphPrimary")
@@ -696,18 +694,24 @@ end)
 					-- Code for when the player is facing <---
 						-- Pull enemies to the right
 					if actor.direction == 180 then  															-- print("Facing left") 
+					if not GM.actor_is_boss(victim) and GM.actor_is_classic(victim) then
+							actor:skill_util_reset_activity_state()
 						pullDamager.knockback = 14
 						pullDamager.knockback_dir = 1 -- (1 = right)
+					end
 						-- Pull Seraph to the left
-						  actor.pHspeed = actor.pVspeed + 14
+						  actor.pHspeed = -14 * actor.image_xscale
 					end
 					-- Code for when the player is facing --->
 						-- Pull enemies to the left
 					if actor.direction == 0 then  																-- print("Facing right")
+						if not GM.actor_is_boss(victim) and GM.actor_is_classic(victim) then
+							actor:skill_util_reset_activity_state()
 						pullDamager.knockback = 14
 						pullDamager.knockback_dir = -1 -- (-1 = left)
+					end
 						-- Pull Seraph to the right
-						actor.pHspeed = actor.pVspeed + (-14)
+						actor.pHspeed = 14 * actor.image_xscale
 					end
 				end
 				
@@ -731,7 +735,7 @@ end)
 					end
 					local bashDamager = actor:fire_direct(victim, 3.1, nil, victim.x, victim.y, nil, true).attack_info
 					bashDamager.climb = -30
-					bashDamager:set_stun(0.65)
+					bashDamager:set_stun(0.75)
 					end
 				Alarm.create(actualBash, 40)
 			end
@@ -1028,27 +1032,18 @@ local seraphLog = Survivor_Log.new(seraph, sprite_log)
     -- print(ending)
 end)
 
-	-- Thanks to TRYAGAIN for this block of code!
-	function set_survivor_achievement(achievement_seraph, seraph, difficulty, ending, artifacts)
+	-- Here be achievements
 	
-		achievement_seraph.group = Achievement.GROUP.character
-		
-			achievement_seraph.unlock_kind = survivor
-			
-				achievement_seraph.token_unlock_name = seraph.token_name
-		
-						achievement_seraph:set_sprite(sprite_portrait, 0)
-						
-							seraph:set_survivor_achievement(achievement_seraph)
-				
-								
-			end
-			
-		if artifacts == 0 then
-			if difficulty == hard then
-				if ending == win then seraph.progress_achievement()
-			else end
-			end
-		end
+	-- Alt primary
+	
+	seraphAltPrimary:add_achievement(1, true)
+	
+	-- Alt utility
+	
+	seraphAltUtility:add_achievement(1, true)
+	
+	-- Alt special
+	
+	seraphAltSpecial:add_achievement(1, true)
 		
 	

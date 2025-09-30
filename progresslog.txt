@@ -59,4 +59,17 @@
 	-Started work on refining walk, idle, walk back cycles to be more pleasant
 	-Started work on respriting the entirety of climb, fall and jump cycles
 	(All other animations are more than fine, except maybe shoot_2, which has to be a bit more distinct from shoot_1)
-	-
+	-Started work on making the CSS for Seraph and skins
+	-Started on trying to network things
+	-Fixed a bug where pull state of utility would pull the enemies with opposite direction (seraph is pulling from left to right, enemy is looking to left due to
+	attacking or any other state, and it results in that enemy getting knocked to the left, not right)
+	-All for today
+30.09.2025 - Buh?
+	-Changed the whole concept, now no longer a standalone Seraph port, but rather a fan-port of void content from SS1 into RoRR. Basically, SSR Void Expansion
+	(and as such now uses ID ssr_ve)
+	-Changed a few things in Seraph
+	-Added language tokens for everything I found on void in ss1
+	-Added placeholder sprites, sounds and folders for all of void enemies, Edict, plus Nemesis Sniper (Edict's 3rd phase used 3 nemesises,
+	and while nemmando and nemmerc are in, there's no third.)
+	-Started working on one of strays (Amalgolem)
+

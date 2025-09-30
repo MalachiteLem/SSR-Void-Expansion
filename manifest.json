@@ -1,11 +1,12 @@
 ﻿{
-	"name": "Seraph!",
+	"name": "Starstorm Returns - Void Expansion",
 	"version_number": "0.0.1",
-	"website_url": "",
-	"description": "Seraph fan-port. Versions 0.0.1-0.0.6 will be sent to people I trust to playtest + have generally honest feedback, or to those who asked. (Also, I suck at spriting, send help my way PLEASE-)",
+	"website_url": "https://github.com/MalachiteLem/Stuffs/tree/main",
+	"description": "An expansion for Starstorm Returns mod, featuring returning void features from Starstorm 1 such as: Nemesis Invasions, one more Nemesis Survivor, alternative ending, handful of enemies, unlocks for Nemesis Commando and Mercenary, and some more!",
 	"dependencies": [
 		"ReturnOfModding-ReturnOfModding-1.0.53",
 		"RoRRModdingToolkit-RoRR_Modding_Toolkit-1.2.0",
-		"LuaENVY-ENVY-1.2.0"
+		"LuaENVY-ENVY-1.2.0",
+		"RobomandosLab-StarstormReturns-0.1.2"
 	]
 }

@@ -3,11 +3,12 @@
 mods["RoRRModdingToolkit-RoRR_Modding_Toolkit"].auto(true)
 
 PATH = _ENV["!plugins_mod_folder_path"]
-NAMESPACE = "Stuffs"
+NAMESPACE = "ssr_ve"
 
 local init = function()
 	local folders = {
-		"Survivors"}
+		"Survivors",
+		"Actors"}
 
 	for _, folder in ipairs(folders) do
 		-- NOTE: this includes filepaths within subdirectories of the above folders
