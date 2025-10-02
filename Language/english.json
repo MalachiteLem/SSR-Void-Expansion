@@ -269,11 +269,38 @@
             "subname": "End of the Line",
             "story": "Placeholder"
         },
+		"limbo": {
+            "name": "Limbo",
+            "subname": "The Nowhere",
+            "story": "Placeholder"
+        },
         "voidGates": {
             "name": "The Gates",
             "subname": "Ruptured Principle",
             "story": "Placeholder"
         }
+    },
+    "monster": {
+        "Caregiver.name": "Caregiver",
+        "Caregiver.story": "How phenomenal, how life finds its way even in the most outlandish environments. Despite all their wildly different characteristics these creatures all share a lack of pigmentation, and a distinct sensibility (and attraction!) to light, like flies on a lamp, they don't seem particularly intelligent.\n\nPerhaps some of them share an ancestor with creatures found on the planet? Or perhaps there's more to their origins hiding in this odd, uncanny place.",
+		
+        "Shudder.name": "Shudder",
+        "Shudder.story": "How phenomenal, how life finds its way even in the most outlandish environments. Despite all their wildly different characteristics these creatures all share a lack of pigmentation, and a distinct sensibility (and attraction!) to light, like flies on a lamp, they don't seem particularly intelligent.\n\nPerhaps some of them share an ancestor with creatures found on the planet? Or perhaps there's more to their origins hiding in this odd, uncanny place.",
+		
+        "Skewer.name": "Skewer",
+        "Skewer.story": "How phenomenal, how life finds its way even in the most outlandish environments. Despite all their wildly different characteristics these creatures all share a lack of pigmentation, and a distinct sensibility (and attraction!) to light, like flies on a lamp, they don't seem particularly intelligent.\n\nPerhaps some of them share an ancestor with creatures found on the planet? Or perhaps there's more to their origins hiding in this odd, uncanny place.",
+		
+        "Slaggolem.name": "Slag Golem",
+        "Slaggolem.story": "How phenomenal, how life finds its way even in the most outlandish environments. Despite all their wildly different characteristics these creatures all share a lack of pigmentation, and a distinct sensibility (and attraction!) to light, like flies on a lamp, they don't seem particularly intelligent.\n\nPerhaps some of them share an ancestor with creatures found on the planet? Or perhaps there's more to their origins hiding in this odd, uncanny place.",
+		
+        "Twirl.name": "Twirl",
+        "Twirl.story": "How phenomenal, how life finds its way even in the most outlandish environments. Despite all their wildly different characteristics these creatures all share a lack of pigmentation, and a distinct sensibility (and attraction!) to light, like flies on a lamp, they don't seem particularly intelligent.\n\nPerhaps some of them share an ancestor with creatures found on the planet? Or perhaps there's more to their origins hiding in this odd, uncanny place.",
+		
+        "Voidguard.name": "Void Guard",
+        "Voidguard.story": "Placeholder",
+		
+        "Amalgolem.name": "Amalgolem",
+        "Amalgolem.story": "How phenomenal, how life finds its way even in the most outlandish environments. Despite all their wildly different characteristics these creatures all share a lack of pigmentation, and a distinct sensibility (and attraction!) to light, like flies on a lamp, they don't seem particularly intelligent.\n\nPerhaps some of them share an ancestor with creatures found on the planet? Or perhaps there's more to their origins hiding in this odd, uncanny place."
     },
     "actor": {
         "NemesisSniper.name": "Nemesis Sniper",
@@ -287,9 +314,9 @@
         "Voidguard.name": "Void Guard",
         "Amalgolem.name": "Amalgolem",
 		
-        "Edict1.name": "???",
-        "Edict2.name": "The Edict",
-        "Edict.text": "Surreptitious Whisperer"
+        "monster.Edict1.name": "???",
+        "monster.Edict2.name": "The Edict",
+        "monster.Edict.text": "Surreptitious Whisperer"
     },
     "interactable": {
         "TechnicianFlag.name": "Torn Flag",

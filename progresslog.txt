@@ -72,4 +72,21 @@
 	-Added placeholder sprites, sounds and folders for all of void enemies, Edict, plus Nemesis Sniper (Edict's 3rd phase used 3 nemesises,
 	and while nemmando and nemmerc are in, there's no third.)
 	-Started working on one of strays (Amalgolem)
-
+01.10.2025 - Damn
+	-Changed the concept again. Now just a port of few stuffs I want to show off and contribute to SSR. Can't a man dream of joining SSR dev team?
+	Current plan is: Metachronic Trinket, Pressurized canister, Seraph, Amalgolem, Caregiver, Shudder, Twirl. There's NO way I do Edict with my knowledge
+	plus I am already burnt out on making the sprites. Never statisfied with how they turn out, they look out of place, and generally don't fit
+	-Committed Amalgolem to the repo
+	-Started working on Twirl
+	-Added Twirl spawn, death, walk, idle, projectile. Other sprites use their ss1 counterparts.
+	-Started working on Twirl's code.
+	-Removed redundant files
+	-Amalgolem's code is finished
+	-Twirl is missing the trail, otherwise done
+02.10.2025 - Damn x2
+	-Finished work on Amalgolem, the enemy is completed.
+	-Started working in full on Twirl, and alongside them on Shudder
+	-Current priorities: Twirl -> Shudder -> Caregiver -> Artifact of the Void -> Metachronic Trinket, Counterfeit TP, Pressurized Canister -> Seraph
+	(complete edition tm) -> Networking. After networking MAYBE I will TRY limbo and Edict. Want the limbo stage to be some sort of a 'debug' stage,
+	where nothing spawns. It could be accessed from risk of rain stage through counterfeit teleporter at any point. From Limbo, you will be able to access the Edict fight
+	-And HOLY were those past few days progressive. but spriting is so tiring...
