@@ -24,14 +24,15 @@
 	local sound_spawn	=Resources.sfx_load(NAMESPACE, "AmalgolemSpawn", path.combine(SOUND_PATH, "Spawn.ogg"))
 	local sound_hit		=gm.constants.wGolemAttack1
 	local sound_death	=gm.constants.wGolemDeath
+	local sound_hurt	=gm.constants.wChildHit
 	
 	-- Create the log
 	
 	local log = Monster_Log.new(NAMESPACE, "Amalgolem")
 	log.sprite_id = sprite_shoot
 	log.portrait_id = sprite_portrait
-	log.sprite_offset_x = 24
-	log.sprite_offset_y = 28
+	log.sprite_offset_x = 34
+	log.sprite_offset_y = 46
 	log.stat_hp = 460
 	log.stat_damage = 48
 	log.stat_speed = 0.9
@@ -64,6 +65,7 @@
 		
 		actor.sound_spawn = sound_spawn
 		actor.sound_death = gm.constants.wGolemDeath
+		actor.sound_hit = sound_hurt
 		
 		actor:enemy_stats_init(48, 460, 50, 65)
 		actor.pHmax_base = 0.9
@@ -94,7 +96,7 @@
 		
 		if data.fired == 0 and actor.image_index >= 5 then
 		local trample1 = actor:fire_explosion(actor.x, actor.y + 45, 125, 15, 1)
-			actor:sound_play(sound_hit, 1, 1.3 + math.random() * 0.25)
+			actor:sound_play(sound_hit, 1.4, 1.3 + math.random() * 0.25)
 			data.fired = 1
 		end
 		
@@ -106,7 +108,7 @@
 		
 		if data.fired == 2 and actor.image_index >= 17 then
 		local trample3 = actor:fire_explosion(actor.x, actor.y + 45, 125, 15, 1)
-			actor:sound_play(sound_hit, 1, 1.3 + math.random() * 0.25)
+			actor:sound_play(sound_hit, 1.4, 1.3 + math.random() * 0.25)
 			data.fired = 3
 		end
 		

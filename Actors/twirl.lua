@@ -8,15 +8,15 @@
 	local sprite_mask		=Resources.sprite_load(NAMESPACE, "TwirlMask", path.combine(SPRITE_PATH, "Mask.png"), 1, 0, 0)
 	local sprite_idle		=Resources.sprite_load(NAMESPACE, "TwirlIdle", path.combine(SPRITE_PATH, "Idle.png"), 1, 8, 0)
 	local sprite_walk		=Resources.sprite_load(NAMESPACE, "TwirlWalk", path.combine(SPRITE_PATH, "Walk.png"), 5, 8, 2)
-	local sprite_death		=Resources.sprite_load(NAMESPACE, "TwirlDeath", path.combine(SPRITE_PATH, "Death.png"), 14, 8, 28)
-	local sprite_shoot		=Resources.sprite_load(NAMESPACE, "TwirlShoot", path.combine(SPRITE_PATH, "Shoot1.png"), 20, 0, 5)
+	local sprite_death		=Resources.sprite_load(NAMESPACE, "TwirlDeath", path.combine(SPRITE_PATH, "Death.png"), 19, 8, 44)
+	local sprite_shoot		=Resources.sprite_load(NAMESPACE, "TwirlShoot", path.combine(SPRITE_PATH, "Shoot1.png"), 20, 0, 2)
 	local sprite_spawn		=Resources.sprite_load(NAMESPACE, "TwirlSpawn", path.combine(SPRITE_PATH, "Spawn.png"), 25, 8, 0)
 	local sprite_palette		=Resources.sprite_load(NAMESPACE, "TwirlPalette", path.combine(SPRITE_PATH, "Palette.png"))
 	local sprite_portrait		=Resources.sprite_load(NAMESPACE, "TwirlPortrait", path.combine(SPRITE_PATH, "portrait.png"))
 	local sprite_nonsense		=Resources.sprite_load(NAMESPACE, "TwirlNonsense", path.combine(SPRITE_PATH, "Jump.png"), 1, 0, 0)
 	local sprite_bullet			=Resources.sprite_load(NAMESPACE, "TwirlBullet", path.combine(SPRITE_PATH, "Bullet.png"), 4, 0, 0)
-	local sprite_trail			=Resources.sprite_load(NAMESPACE, "TwirlTrail", path.combine(SPRITE_PATH, "Trail.png"), 5, 0, 0)
-	local sprite_trail_mask		=Resources.sprite_load(NAMESPACE, "TwirlTrailMask", path.combine(SPRITE_PATH, "TrailMask.png"), 5, 0, 0)
+	local sprite_trail			=Resources.sprite_load(NAMESPACE, "TwirlTrail", path.combine(SPRITE_PATH, "Trail.png"), 4, 0, 0)
+	local sprite_trail_mask		=Resources.sprite_load(NAMESPACE, "TwirlTrailMask", path.combine(SPRITE_PATH, "TrailMask.png"), 4, 0, 20)
 	
 	local sprite_buff		=Resources.sprite_load(NAMESPACE, "TwirlInked", path.combine(SPRITE_PATH, "Buff.png"), 1, 8, -4)
 	
@@ -43,9 +43,10 @@
 	
 	local debuffSlowedInk	=Buff.new(NAMESPACE, "debuffSlowedInk")
 							debuffSlowedInk.is_debuff = true
+							debuffSlowedInk.show_icon = false
 							debuffSlowedInk:clear_callbacks()
 							
-	debuffInked.max_stack = 3
+	debuffInked.max_stack = 1
 	debuffSlowedInk.max_stack = 1
 	
 	-- Inked
@@ -54,14 +55,16 @@
 	local max_health = actor.maxhp
 	local damage = max_health * 0.001
 	actor.hp = actor.hp - damage
-	Particle.find("ror", "PixelDust"):create_color(actor.x, actor.y + math.random(-7, 15), Color.BLACK, 7, Particle.SYSTEM.middle)
+	Particle.find("ror", "PixelDust"):create_color(actor.x, actor.y + math.random(-7, 15), Color.BLACK, 10, Particle.SYSTEM.middle)
+	actor.hud_health_color = Color.from_rgb(22, 22, 22)
 	end)
+	
 	
 	-- Ink slowdown
 	debuffSlowedInk:clear_callbacks()
 	debuffSlowedInk:onPostStep(function(actor)
-		actor.pHspeed = actor.pHspeed - 0.25
-		Particle.find("ror", "PixelDust"):create_color(actor.x + math.random(-5, 5), actor.y - 3, Color.BLACK, 5, Particle.SYSTEM.middle)
+		actor.pHmax = actor.pHmax - 0.028
+		Particle.find("ror", "PixelDust"):create_color(actor.x + math.random(-5, 5), actor.y - 8, Color.BLACK, 8, Particle.SYSTEM.middle)
 	end)
 	
 	-- Create the log
@@ -103,35 +106,43 @@
 	
 	inst:move_contact_solid(270, -1)
 	inst.team = gm.constants.TEAM_MONSTER
-	inst.life = 0.8 * 60
-	inst.subimage = math.random(1, 5)
-	inst.mask = sprite_trail_mask
+	inst.life = 15
+	inst.subimage = math.random(1, 4)
+	inst.intangible = true
+	inst.depth = 500
+	inst.max_count = 9
+	inst.alpha = 2
 	
 	
 	for i = 1, 100 do
-		if inst:is_colliding(gm.constants.pBlock, inst.x, inst.y) then
-			break
-		else
 			inst.y = inst.y + 1
 			if i == 100 then
 				inst:destroy()
-			end
 		end
 	end
 end)
 
 	objTwirlTrail:clear_callbacks()
 	objTwirlTrail:onStep(function(inst)
+			
+			inst.alpha = 4
+			
+			inst.life = inst.life - 1
+					if inst.life <= 0 then inst:destroy()
+	elseif inst.alpha > 0 then
+		inst.alpha = inst.alpha - 0.1
+	else
+		inst:destroy()
+	end
+	
 	local actors = inst:get_collisions(gm.constants.pActorCollisionBase)
 	
 	for _, actor in ipairs(actors) do
 		if inst:attack_collision_canhit(actor) then
 			if gm._mod_net_isHost() then
-			if actor.team ~= 2 then
-				GM.set_buff_time_nosync(actor, debuffSlowedInk, 1)
+				 actor:buff_apply(debuffSlowedInk, 1.9 * 60, 1)
 			else return end
 				end
-			end
 		end
 	end)
 	
@@ -166,15 +177,27 @@ end)
 		actor.sound_death = sound_death
 		actor.sound_hit = sound_hurt
 		
-		actor:enemy_stats_init(15, 200, 0, 36)
+		actor:enemy_stats_init(15, 200, 60, 36)
 		actor.pHmax_base = 1.1
 		
-		actor.z_range = 370
+		actor.z_range = 420
 		twirlPrimary.cooldown = 12 * 60
 		actor.monster_log_drop_id = log.value
 		actor:set_default_skill(Skill.SLOT.primary, twirlPrimary)
 		
 		actor:init_actor_late()
+	end)
+	
+	twirl:onStep(function(actor)
+
+    local inst = Object.find("ssr_ve-TwirlTrail")
+    print(inst)
+	
+		local trail = objTwirlTrail:create(actor.x - 25, actor.y + 32)
+			trail.team = actor.team
+			trail.parent = actor
+			trail.life = 0
+			trail.intangible = true
 	end)
 	
 	twirlPrimary:clear_callbacks()
@@ -194,12 +217,12 @@ end)
 		local dir = actor:skill_util_facing_direction()
 		
 		if data.fired == 0 and actor.image_index > 1 then
-			actor:sound_play(sound_shoot1, 0.6, 1 + math.random() * 0.2)
+			actor:sound_play(sound_shoot1, 1.5, 1 + math.random() * 0.2)
 			data.fired = 1
 		end
 		
 		if data.fired == 1 and actor.image_index > 14 then
-			actor:sound_play(sound_shoot2, 0.6, 1 + math.random() * 0.2)
+			actor:sound_play(sound_shoot2, 1.2, 1 + math.random() * 0.2)
 			
 			local ink_inst = objInk:create(actor.x - 24, actor.y + 18)
 			ink_inst.image_xscale = actor.image_xscale
@@ -219,7 +242,7 @@ end)
 	if attack_tag then
 		local victim = hit_info.target
 	if attack_tag == TWIRL_BULLET then
-	victim:sound_play(sound_applyInked, 0.6, 1 + math.random() * 0.2)
+	victim:sound_play(sound_applyInked, 1.4, 1 + math.random() * 0.2)
 		if victim:buff_stack_count(debuffInked) == 0 then
 				victim:buff_apply(debuffInked, 4 * 60, 1)
 		else
@@ -230,11 +253,7 @@ end)
 	end)
 
 objInk:onStep(function(inst)
-	local data = inst:get_data()
-	if not Instance.exists(inst.parent) then
-		inst:destroy()
-	return
-end				
+	local data = inst:get_data()	
 		data.life = data.life - 1
 					if data.life <= 0 then inst:destroy()
 end
