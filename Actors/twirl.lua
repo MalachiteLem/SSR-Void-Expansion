@@ -110,8 +110,7 @@
 	inst.subimage = math.random(1, 4)
 	inst.intangible = true
 	inst.depth = 500
-	inst.max_count = 9
-	inst.alpha = 2
+	inst.alpha = 40
 	
 	
 	for i = 1, 100 do
@@ -124,15 +123,9 @@ end)
 
 	objTwirlTrail:clear_callbacks()
 	objTwirlTrail:onStep(function(inst)
-			
-			inst.alpha = 4
-			
-			inst.life = inst.life - 1
-					if inst.life <= 0 then inst:destroy()
-	elseif inst.alpha > 0 then
-		inst.alpha = inst.alpha - 0.1
-	else
-		inst:destroy()
+	
+		inst.life = inst.life - 1
+				if inst.life <= 0 then inst:destroy()
 	end
 	
 	local actors = inst:get_collisions(gm.constants.pActorCollisionBase)
@@ -140,9 +133,9 @@ end)
 	for _, actor in ipairs(actors) do
 		if inst:attack_collision_canhit(actor) then
 			if gm._mod_net_isHost() then
-				 actor:buff_apply(debuffSlowedInk, 1.9 * 60, 1)
+				 actor:buff_apply(debuffSlowedInk, 2.4 * 60)
 			else return end
-				end
+		end
 		end
 	end)
 	
@@ -189,15 +182,21 @@ end)
 	end)
 	
 	twirl:onStep(function(actor)
-
-    local inst = Object.find("ssr_ve-TwirlTrail")
-    print(inst)
 	
-		local trail = objTwirlTrail:create(actor.x - 25, actor.y + 32)
-			trail.team = actor.team
-			trail.parent = actor
-			trail.life = 0
-			trail.intangible = true
+	local dir = actor:skill_util_facing_direction()
+
+    local obj = Instance.find(Object.find("ssr_ve-TwirlTrail"))
+		if dir == 180 then
+		if actor:is_colliding(obj, -actor.x * actor.image_xscale, actor.y) then return end end
+		if dir == 0 then
+		if actor:is_colliding(obj, actor.x * actor.image_xscale, actor.y) then return end end
+		
+		local trailI = objTwirlTrail:create(actor.x, actor.y + 32)
+			trailI.team = actor.team
+			trailI.parent = actor
+			trailI.life = 20
+			trailI.image_xscale = actor.image_xscale
+			trailI.intangible = true
 	end)
 	
 	twirlPrimary:clear_callbacks()
