@@ -1,4 +1,4 @@
-A WIP fan-port of Seraph survivor from mod Starstorm by NK for Risk of Rain (2013) to Risk of Rain Returns.
+A WIP fan-port of Void content and some more things from mod Starstorm by NK for Risk of Rain (2013) to Risk of Rain Returns.
 
 HUGE thanks/credits to:
 
@@ -11,3 +11,6 @@ TangoKnight, Winslow, Beebo - inspired by their spriting work a lot. Tried to le
 Fox, Goobessa, qwp, Wertus, Nilzer and a handful others - supportive and kind words during my time working on this
 
 And everyone else who was involved in any way with this!
+
+Planned first release: November 5th, if things go smooth
+
