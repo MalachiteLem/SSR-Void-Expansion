@@ -1,39 +1,49 @@
 
 	local SPRITE_PATH = path.combine(PATH, "Sprites/Survivors/Nemsniper")
 	local SOUND_PATH = path.combine(PATH, "Sounds/Survivors/Nemsniper")
-	d-
 	
 	local sprite_palette				=Resources.sprite_load(NAMESPACE, "NemsniperPalette", path.combine(SPRITE_PATH, "palette.png"))
-	local sprite_select		=Resources.sprite_load(NAMESPACE, "NemsniperSelectS0", path.combine(SPRITE_PATH, "selectS0.png"), 12, 0, 0)
+	local sprite_loadout		=Resources.sprite_load(NAMESPACE, "NemsniperSelectS0", path.combine(SPRITE_PATH, "selectS0.png"), 12, 28, 0)
 	local sprite_portrait		=Resources.sprite_load(NAMESPACE, "NemsniperPortraitS0", path.combine(SPRITE_PATH, "portraitS0.png"), 3)
 	local sprite_portrait_small 		=Resources.sprite_load(NAMESPACE, "NemsniperPortraitSmallS0", path.combine(SPRITE_PATH, "portraitSmallS0.png"))
 	local sprite_credits		= Resources.sprite_load(NAMESPACE, "CreditsSurvivorNemsniper", path.combine(SPRITE_PATH, "credits.png"), 1, 7, 11)
 	local sprite_skills		=Resources.sprite_load(NAMESPACE, "NemsniperSkills", path.combine(SPRITE_PATH, "skills.png"), 5)
-	local sprite_idle		=Resources.sprite_load(NAMESPACE, "NemsniperIdle", path.combine(SPRITE_PATH, "idle.png"), 1, 18, 29)
-	local sprite_walk		=Resources.sprite_load(NAMESPACE, "NemsniperWalk", path.combine(SPRITE_PATH, "walk.png"), 8, 18, 29)
-	local sprite_walk_back		=Resources.sprite_load(NAMESPACE, "NemsniperWalkBack", path.combine(SPRITE_PATH, "walk.png"), 8, 18, 29)
+	local sprite_idle		=Resources.sprite_load(NAMESPACE, "NemsniperIdle", path.combine(SPRITE_PATH, "idle.png"), 1, 18, 7)
+	local sprite_walk		=Resources.sprite_load(NAMESPACE, "NemsniperWalk", path.combine(SPRITE_PATH, "walk.png"), 8, 18, 12)
+	local sprite_walk_back		=Resources.sprite_load(NAMESPACE, "NemsniperWalkBack", path.combine(SPRITE_PATH, "walk.png"), 8, 18, 12)
 	local sprite_jump		=Resources.sprite_load(NAMESPACE, "NemsniperJump", path.combine(SPRITE_PATH, "jump.png"), 1, 18, 29)
 	local sprite_fall			= Resources.sprite_load(NAMESPACE, "NemsniperFall", path.combine(SPRITE_PATH, "fall.png"), 1, 18, 29)
-	local sprite_climb			= Resources.sprite_load(NAMESPACE, "NemsniperClimb", path.combine(SPRITE_PATH, "climb.png"), 6, 19, 33)
-	local sprite_death			= Resources.sprite_load(NAMESPACE, "NemsniperDeath", path.combine(SPRITE_PATH, "death.png"), 7, 24, 54)
+	local sprite_climb			= Resources.sprite_load(NAMESPACE, "NemsniperClimb", path.combine(SPRITE_PATH, "climb.png"), 6, 16, 22)
+	local sprite_death			= Resources.sprite_load(NAMESPACE, "NemsniperDeath", path.combine(SPRITE_PATH, "death.png"), 7, 24, 21)
 	local sprite_decoy			= Resources.sprite_load(NAMESPACE, "NemsniperDecoy", path.combine(SPRITE_PATH, "decoy.png"), 1, 17, 16)
 	local sprite_drone_idle		= Resources.sprite_load(NAMESPACE, "DronePlayerNemsniperIdle", path.combine(SPRITE_PATH, "droneIdle.png"), 5, 11, 14)
 	local sprite_drone_shoot	= Resources.sprite_load(NAMESPACE, "DronePlayerNemsniperShoot", path.combine(SPRITE_PATH, "droneShoot.png"), 5, 33, 13)
 	local sprite_credits		= Resources.sprite_load(NAMESPACE, "NemsniperCredits", path.combine(SPRITE_PATH, "credits.png"), 1)
 	
-	local sprite_shoot1_1		=Resources.sprite_load(NAMESPACE, "NemsniperShoot1_1", path.combine(SPRITE_PATH, "shoot1_1.png"), 6, 17, 29)
-	local sprite_shoot1_2 		=Resources.sprite_load(NAMESPACE, "NemsniperShoot1_2", path.combine(SPRITE_PATH, "shoot1_2.png"), 4, 17, 29)
-	local sprite_shoot1_3			=Resources.sprite_load(NAMESPACE, "NemsniperShoot1_3", path.combine(SPRITE_PATH, "shoot1_3.png"), 14, 30, 56)
+	local sprite_shoot1_1		=Resources.sprite_load(NAMESPACE, "NemsniperShoot1_1", path.combine(SPRITE_PATH, "shoot1_1.png"), 6, 23, 31)
+	local sprite_shoot1_2 		=Resources.sprite_load(NAMESPACE, "NemsniperShoot1_2", path.combine(SPRITE_PATH, "shoot1_2.png"), 6, 23, 31)
+	local sprite_shoot1_3			=Resources.sprite_load(NAMESPACE, "NemsniperShoot1_3", path.combine(SPRITE_PATH, "shoot1_3.png"), 4, 24, 24)
 	local sprite_shoot3			=Resources.sprite_load(NAMESPACE, "NemsniperShoot3", path.combine(SPRITE_PATH, "shoot3.png"), 16, 20, 29)
 
 	local sound_shoot1_1			=Resources.sfx_load(NAMESPACE, "NemsniperShoot1_1", path.combine(SOUND_PATH, "Shoot1_1.ogg"))
-	local sound_shoot1_2			=Resources.sfx_load(NAMESPACE, "SeraphShoot1_2", path.combine(SOUND_PATH, "Shoot1_2.ogg"))
-	local sound_shoot2_1			=Resources.sfx_load(NAMESPACE, "SeraphShoot2_1", path.combine(SOUND_PATH, "Shoot2_1.ogg"))
+	local sound_shoot1_2			=Resources.sfx_load(NAMESPACE, "NemsniperShoot1_2", path.combine(SOUND_PATH, "Shoot1_2.ogg"))
+	local sound_shoot2_1			=Resources.sfx_load(NAMESPACE, "NemsniperShoot2_1", path.combine(SOUND_PATH, "Shoot2_1.ogg"))
+	
+	local sprite_bar		=Resources.sprite_load(NAMESPACE, "NemsniperBarHeat", path.combine(SPRITE_PATH, "bar_empty.png"))
 
-	-- Register the survivor
+	local overheated        =Buff.new(NAMESPACE, "debuffOverheated")
+                            overheated.show_icon = false
+                            overheated.is_debuff = false
+                            overheated:clear_callbacks()
+        overheated.max_stack = 1
 
 	local nemsniper = Survivor.new(NAMESPACE, "nemsniper")
 	local nemsniper_id = nemsniper.value
+	local player_actor
+	
+	local heat = 0
+	
+	
 		
 	nemsniper:set_stats_base({
 			maxhp = 99,
@@ -73,22 +83,24 @@
 	
 	nemsniper:set_palettes(sprite_palette, sprite_palette, sprite_palette)
 	
-	nemsniper:add_skin("Crystal", 1, Resources.sprite_load(NAMESPACE, "NemsniperSelectS1", path.combine(SPRITE_PATH, "selectS1.png"), 12, 28, 0),
-	Resources.sprite_load(NAMESPACE, "NemsniperPortraitS1", path.combine(SPRITE_PATH, "portraitS1.png"), 3),
-    Resources.sprite_load(NAMESPACE, "NemsniperPortraitSmallS1", path.combine(SPRITE_PATH, "portraitSmallS1.png")))
+	nemsniper:add_skin("Crystal", 1, Resources.sprite_load(NAMESPACE, "NemsniperSelect1", path.combine(SPRITE_PATH, "selectS1.png"), 12, 28, 0),
+	Resources.sprite_load(NAMESPACE, "NemsniperPortrait1", path.combine(SPRITE_PATH, "portraitS1.png"), 3),
+    Resources.sprite_load(NAMESPACE, "NemsniperPortraitSmall1", path.combine(SPRITE_PATH, "portraitSmallS1.png")))
 	
 	nemsniper:add_skin("Nemesis", 2, Resources.sprite_load(NAMESPACE, "NemsniperSelect2", path.combine(SPRITE_PATH, "selectS2.png"), 12, 28, 0),
-	Resources.sprite_load(NAMESPACE, "NemsniperPortraitS2", path.combine(SPRITE_PATH, "portraitS2.png"), 3),
-    Resources.sprite_load(NAMESPACE, "SeraphPortraitSmallS2", path.combine(SPRITE_PATH, "portraitSmallS2.png")))
+	Resources.sprite_load(NAMESPACE, "NemsniperPortrait2", path.combine(SPRITE_PATH, "portraitS2.png"), 3),
+    Resources.sprite_load(NAMESPACE, "SeraphPortraitSmall2", path.combine(SPRITE_PATH, "portraitSmallS2.png")))
 	
 	nemsniper:add_skin("Coral", 3, Resources.sprite_load(NAMESPACE, "NemsniperSelect3", path.combine(SPRITE_PATH, "selectS3.png"), 12, 28, 0),
-	Resources.sprite_load(NAMESPACE, "NemsniperPortraitS3", path.combine(SPRITE_PATH, "portraitS3.png"), 3),
-    Resources.sprite_load(NAMESPACE, "NemsniperPortraitSmallS3", path.combine(SPRITE_PATH, "portraitSmallS3.png")))
+	Resources.sprite_load(NAMESPACE, "NemsniperPortrait3", path.combine(SPRITE_PATH, "portraitS3.png"), 3),
+    Resources.sprite_load(NAMESPACE, "NemsniperPortraitSmall3", path.combine(SPRITE_PATH, "portraitSmallS3.png")))
 	
 	nemsniper:add_skin("Legacy", 4, Resources.sprite_load(NAMESPACE, "NemsniperSelect4", path.combine(SPRITE_PATH, "selectS4.png"), 12, 28, 0),
-	Resources.sprite_load(NAMESPACE, "NemsniperPortraitS4", path.combine(SPRITE_PATH, "portraitS4.png"), 3),
-    Resources.sprite_load(NAMESPACE, "NemsniperPortraitSmallS4", path.combine(SPRITE_PATH, "portraitSmallS4.png")))
+	Resources.sprite_load(NAMESPACE, "NemsniperPortrait4", path.combine(SPRITE_PATH, "portraitS4.png"), 3),
+    Resources.sprite_load(NAMESPACE, "NemsniperPortraitSmall4", path.combine(SPRITE_PATH, "portraitSmallS4.png")))
 
+	local objHeatBar = Object.new(NAMESPACE, "NemsniperHeatBar")
+	objHeatBar.obj_depth = -400
 
 	-- Create skills
 	local nemsniperPrimary = nemsniper:get_primary()
@@ -101,13 +113,26 @@
     nemsniperPrimary:set_skill_animation(shoot1_1)
 	nemsniperSecondary:set_skill_animation(shoot1_2)
 	nemsniperUtility:set_skill_animation(shoot3)
+
+	nemsniper:clear_callbacks()
+	nemsniper:onInit(function(actor)
+	if actor.class == 20.0 then
+		local data = actor:get_data()
+		heat = 0
+
+	if not Instance.exists(data.objHeatBar) then
+		data.objHeatBar = objHeatBar:create()
+		data.objHeatBar.parent = actor
+			end
+		end
+end)
 	
 	-- Primary
 	nemsniperPrimary.sprite = sprite_skills
 	nemsniperPrimary.subimage = 0 
-	nemsniperPrimary.cooldown = 58
+	nemsniperPrimary.cooldown = 30
 	nemsniperPrimary.damage = 2
-	nemsniperPrimary.require_key_press = true
+	nemsniperPrimary.require_key_press = false
 	nemsniperPrimary.is_primary = true
 	nemsniperPrimary.disable_aim_stall = true
 	nemsniperPrimary.does_change_activity_state = true
@@ -115,10 +140,14 @@
 	nemsniperPrimary.required_interrupt_priority = State.ACTOR_STATE_INTERRUPT_PRIORITY.skill
 
 	local statenemsniperPrimary = State.new(NAMESPACE, "nemsniperPrimary")
+	local statenemsniperPrimaryHeated = State.new(NAMESPACE, "nemsniperPrimaryHeated")
 	
 	nemsniperPrimary:clear_callbacks()
-	nemsniperPrimary:onActivate(function(actor)
+	nemsniperPrimary:onActivate(function(actor, data)
+	if actor:buff_stack_count(overheated) == 0 then
 	actor:enter_state(statenemsniperPrimary)
+	else actor:enter_state(statenemsniperPrimaryHeated)
+	end
 end)
 
 	statenemsniperPrimary:clear_callbacks()
@@ -126,14 +155,12 @@ end)
 	actor.image_index = 0
 	data.fired = 0
 	data.currentAnim = 0
-	actor:skill_util_strafe_and_slide_init()
 	data.sprite = sprite_shoot1_1
 end)
 	statenemsniperPrimary:onStep(function(actor, data)
 	actor:skill_util_fix_hspeed()
-    actor:actor_animation_set(sprite_shoot1, 0.19)
+    actor:actor_animation_set(sprite_shoot1_1, 0.3)
 	
-	actor:skill_util_strafe_and_slide(1)
 	actor:skill_util_exit_state_on_anim_end()
 	
    if data.fired == 0 and actor.image_index >= 0 then
@@ -144,36 +171,45 @@ end)
         if not actor:skill_util_update_heaven_cracker(actor, damage) then
            local buff_shadow_clone = Buff.find("ror", "shadowClone")
         for i=0, GM.get_buff_stack(actor, buff_shadow_clone) do
-			local lasers = actor:fire_bullet(actor.x, actor.y - 10, 350, dir, 0, nil, sprite_nemsniperSparks4, nil, false).attack_info -- Fires a non-proccing beam that's used to summon the explosion at the correct position
-				if can_proc == nil then can_proc = true end
-		lasers.climb = 10000
-		lasers.__ssr_nemsniper_primary = ATTACK_TAG_SERAPH_PRIMARY
-				actor:screen_shake(4)
-				actor:sound_play(sound_shoot1, 0.6, 1 + math.random() * 0.3)
+			local projectile = actor:fire_bullet(actor.x, actor.y, 99999, dir, damage, nil, nil, Attack_Info.TRACER.sniper1, true).attack_info
+				actor:screen_shake(1.5)
+				actor:sound_play(sound_shoot1_1, 0.6, 1 + math.random() * 0.3)
+				heat = heat + 10
 				data.fired = 1
 			end
-	end
-	
-	Callback.add(Callback.TYPE.onAttackHit, "SeraphPrimaryOnHit", function(hit_info)
-			local attack_tag = hit_info.attack_info.__ssr_nemsniper_primary
-		if attack_tag then
-			local victim = hit_info.target
-		if attack_tag == ATTACK_TAG_SERAPH_PRIMARY then
-	
-		local explosion = actor:fire_explosion(victim.x, actor.y - 10, 12, 12, damage, nil, sprite_nemsniperSparks1, true).attack_info -- Fires the explosion on enemy hit position
-				explosion.climb = 1 * 8 * 1.35
-					if can_proc == nil then can_proc = true end
-			end
 		end
+	end
+end)
+
+	-- Primary (when heated)
+	
+	statenemsniperPrimaryHeated:clear_callbacks()
+	statenemsniperPrimaryHeated:onEnter(function(actor, data)
+	actor.image_index = 0
+	data.fired = 0
+	data.currentAnim = 0
+	data.sprite = sprite_shoot1_3
 	end)
+	
+	statenemsniperPrimaryHeated:onStep(function(actor, data)
+	actor:skill_util_fix_hspeed()
+	actor:actor_animation_set(sprite_shoot1_3, 0.19)
+	
+	actor:skill_util_exit_state_on_anim_end()
+	
+   if data.fired == 0 and actor.image_index >= 0 then
+		actor:screen_shake(0.2)
+		actor:sound_play(sound_shoot1_2, 0.6, 1 + math.random() * 0.3)
+		data.fired = 1
+		heat = heat + 3
 	end
 end)
 	
-	-- Void Breach (Secondary)
+	-- Secondary
 	nemsniperSecondary.sprite = sprite_skills
 	nemsniperSecondary.subimage = 1
-	nemsniperSecondary.cooldown = 4.5 * 60 -- Basically, x * 60 makes it in seconds. So this skill has a 4,5 seconds CD
-	nemsniperSecondary.damage = 0
+	nemsniperSecondary.cooldown = 6.5 * 60
+	nemsniperSecondary.damage = 0.18
 	nemsniperSecondary.require_key_press = true
 	nemsniperSecondary.does_change_activity_state = true
 	nemsniperSecondary.ignore_aim_direction = true
@@ -181,28 +217,20 @@ end)
 
 	local statenemsniperSecondary = State.new(NAMESPACE, "nemsniperSecondary")
 	
-	-- Register da orb
-	
-	local objOrb = Object.new(NAMESPACE, "SeraphOrbProj", Object.PARENT.actor)
-	objOrb.obj_sprite = sprite_nemsniperOrb
-	objOrb:clear_callbacks()
-	objOrb:onCreate(function(inst)
-		inst:init_actor_default()
-		
-				local data = inst:get_data()
-	data.life = 12 * 60 -- Sets the lifetime of an orb to 12 seconds
-	
-	inst.intangible = true
-	inst.init = nil
-	
-	inst.team = gm.constants.TEAM_PLAYER
-	end)
-	
-	
 	
 	nemsniperSecondary:clear_callbacks()
-	nemsniperSecondary:onActivate(function(actor)
+	nemsniperSecondary:onActivate(function(actor, data)
+	if heat < 5 then
+        actor:sound_play_at(gm.constants.wError, 1.0, 1.0, actor.x, actor.y, nil)
+        actor:refresh_skill(1)
+	end
+	if heat > 5 and actor:buff_stack_count(overheated) == 1 then
+	nemsniperSecondary.damage = 0.24
 	actor:enter_state(statenemsniperSecondary)
+	else if heat > 5 then
+	actor:enter_state(statenemsniperSecondary)
+		end
+	end
 end)
 
 	statenemsniperSecondary:clear_callbacks()
@@ -210,78 +238,32 @@ end)
 	actor.image_index = 0
 	data.fired = 0
 	data.currentAnim = 0
-	actor:skill_util_strafe_and_slide_init()
-	data.sprite = sprite_shoot1
-	data.created = nil
-	actor:sound_play(sound_shoot2_1, 0.6, 1 + math.random() * 0.2)
+	data.sprite = sprite_shoot1_2
 end)
 	statenemsniperSecondary:onStep(function(actor, data)
 	actor:skill_util_fix_hspeed()
-    actor:actor_animation_set(sprite_shoot2, 0.19)
+    actor:actor_animation_set(sprite_shoot1_1, 0.3)
 	
-	actor:skill_util_strafe_and_slide(1)
 	actor:skill_util_exit_state_on_anim_end()
 	
-		if data.created == nil then
-			data.created = 1
-			local orb_inst = objOrb:create(actor.x + 6, actor.y - 5)
-			orb_inst.parent = actor
-			orb_inst.team = actor.team
-				if actor.pHspeed ~= 0 then  -- Set the speed of orb based off player's speed
-							orb_inst.speed = actor.pHspeed * 0.65 + 0.3
-				if actor.pHspeed == 0 then -- If the player is stationary, so will be the orb
-							orb_inst.speed = 0
-				orb_inst.image_xscale = actor.image_xscale
-				orb_inst.__ssr_nemsniper_secondary = ATTACK_TAG_APPLY_SHATTER
+   if data.fired == 0 and actor.image_index >= 0 then
+
+        local damage = actor:skill_get_damage(nemsniperSecondary)
+		local dir = actor:skill_util_facing_direction()
+        
+        if not actor:skill_util_update_heaven_cracker(actor, damage) then
+           local buff_shadow_clone = Buff.find("ror", "shadowClone")
+        for i=0, GM.get_buff_stack(actor, buff_shadow_clone) do
+			local projectile = actor:fire_bullet(actor.x, actor.y, 99999, dir, damage * heat, 1.8, nil, Attack_Info.TRACER.sniper2, true).attack_info
+				actor:screen_shake(1.5)
+				actor:sound_play(sound_shoot1_1, 0.6, 1 + math.random() * 0.3)
+				heat = 0
+				data.fired = 1
 			end
 		end
 	end
-	
-	
-	-- This sets up the thing for applying shatter debuff
-	
-Callback.add(Callback.TYPE.onAttackHit, "SeraphSecondaryCollide", function(hit_info)
-
-	local attack_tag = hit_info.attack_info.__ssr_nemsniper_secondary
-	if attack_tag then
-		local victim = hit_info.target
-	if attack_tag == ATTACK_TAG_APPLY_SHATTER then
-		if victim:buff_stack_count(debuffShatter) == 0 then
-				victim:buff_apply(debuffShatter, 4 * 60, 1)
-		else
-				GM.set_buff_time_nosync(victim, debuffShatter, 4 * 60)
-				end
-			end
-		end
-	end)
 end)
-
-objOrb:onStep(function(inst)
-	local data = inst:get_data()
-	if not Instance.exists(inst.parent) then
-		inst:destroy()
-	return
-end				
-		data.life = data.life - 1
-					if data.life <= 0 then inst:destroy()
-end
-
-	local actors = inst:get_collisions(gm.constants.pActorCollisionBase)
-
-	for _, actor in ipairs(actors) do
-		if inst:attack_collision_canhit(actor) then
-			if gm._mod_net_isHost() then
-				local attack = inst.parent:fire_direct(actor, 0, nil, inst.direction, inst.x, inst.y, false).attack_info
-							if can_proc == nil then can_proc = false end
-				attack.max_hit_number = 1 -- Sets it so that only 1 enemy an get hit with it, but it doesn't work (??????)
-					attack.__ssr_nemsniper_secondary = ATTACK_TAG_APPLY_SHATTER
-					inst:destroy()
-				attack.climb = 10000
-			end
-				actor:sound_play(sound_shoot2_2, 0.6, 1 + math.random() * 0.2)
-		end
-	end
-end)
+	
 
 	-- Disturbance (Utility)
 	
@@ -587,5 +569,74 @@ end)
 		gm.gpu_set_blendmode(0)
 end)
 
-local nemsniperLog = Survivor_Log.new(nemsniper, sprite_log)
+	nemsniper:onStep(function(actor)
 	
+	-- Ty Onyx for help with the clamp gamemaker function
+	heat = gm.clamp(heat, 0, 110)
+	
+	if heat > 0 then
+		heat = heat - 0.2
+	else return end
+
+	if heat > 105 then
+		actor:buff_apply(overheated, 120 * 60, 1)
+	else return end
+
+	if actor:buff_stack_count(overheated) >= 1 then
+		if heat <= 0 then
+		actor:buff_remove(overheated)
+			print("Removed the overheating")
+	else return end end
+	end)
+
+objHeatBar:clear_callbacks()
+objHeatBar:onCreate(function(self)
+	self.parent = -4
+	self.persistent = true
+end)
+objHeatBar:onStep(function(self)
+	if not GM.actor_is_alive(self.parent) then
+		self:destroy()
+	end
+end)
+
+objHeatBar:onDraw(function(self)
+	if not Instance.exists(self.parent) then return end
+	if not gm.bool(self.parent.visible) then return end
+
+	local actor = self.parent
+	local data = actor:get_data()
+
+	local x, y = math.floor(actor.ghost_x+0.5), math.floor(actor.ghost_y-0.5)
+
+	local x = x - 32
+	local y = y + 19
+
+	local heat_left		= x + 2
+	local heat_right	= x + 57
+	local heat_width	= heat_right - heat_left
+	local heat_top		= y + 9
+	local heat_bottom	= y - 1
+
+	if heat >= 0 then
+		gm.draw_set_colour(Color.from_rgb(150, 123, 173)) end
+	if heat >= 15 then
+		gm.draw_set_colour(Color.from_rgb(133, 108, 153)) end
+	if heat >=31 then
+		gm.draw_set_colour(Color.from_rgb(140, 108, 153)) end
+	if heat >=46 then
+		gm.draw_set_colour(Color.from_rgb(147, 108, 153)) end
+	if heat >=61 then
+		gm.draw_set_colour(Color.from_rgb(153, 108, 143)) end
+	if heat >=76 then
+		gm.draw_set_colour(Color.from_rgb(162, 99, 126)) end
+	if heat >= 90 then
+		gm.draw_set_colour(Color.from_rgb(174, 87, 94)) end
+	if actor:buff_stack_count(overheated) == 1 then
+		gm.draw_set_colour(Color.from_rgb(174, 87, 94)) end
+	gm.draw_rectangle(heat_left, heat_top, heat_left + (heat / 1.88), heat_bottom, false)
+
+	gm.draw_sprite(sprite_bar, 0, x, y)
+end)
+
+local nemsniperLog = Survivor_Log.new(nemsniper, sprite_log)
