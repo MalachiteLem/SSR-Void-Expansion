@@ -6,11 +6,12 @@ local sprite_loadout 		= Resources.sprite_load(NAMESPACE, "NemsniperSelectS0", p
 local sprite_portrait 		= Resources.sprite_load(NAMESPACE, "NemsniperPortraitS0", path.combine(SPRITE_PATH, "portraitS0.png"), 3)
 local sprite_portrait_small = Resources.sprite_load(NAMESPACE, "NemsniperPortraitSmallS0", path.combine(SPRITE_PATH, "portraitSmallS0.png"))
 local sprite_credits		= Resources.sprite_load(NAMESPACE, "CreditsSurvivorNemsniper", path.combine(SPRITE_PATH, "credits.png"), 1, 7, 11)
-local sprite_skills			= Resources.sprite_load(NAMESPACE, "NemsniperSkills", path.combine(SPRITE_PATH, "skills.png"), 5)
+local sprite_skills			= Resources.sprite_load(NAMESPACE, "NemsniperSkills", path.combine(SPRITE_PATH, "skills.png"), 9)
 local sprite_idle			= Resources.sprite_load(NAMESPACE, "NemsniperIdle", path.combine(SPRITE_PATH, "idle.png"), 1, 18, 7)
 local sprite_walk			= Resources.sprite_load(NAMESPACE, "NemsniperWalk", path.combine(SPRITE_PATH, "walk.png"), 8, 18, 12)
 local sprite_walk_back		= Resources.sprite_load(NAMESPACE, "NemsniperWalkBack", path.combine(SPRITE_PATH, "walk.png"), 8, 18, 12)
 local sprite_jump			= Resources.sprite_load(NAMESPACE, "NemsniperJump", path.combine(SPRITE_PATH, "jump.png"), 1, 18, 12)
+local sprite_jumpPeak			= Resources.sprite_load(NAMESPACE, "NemsniperJumpPeak", path.combine(SPRITE_PATH, "jumpPeak.png"), 1, 18, 12)
 local sprite_fall			= Resources.sprite_load(NAMESPACE, "NemsniperFall", path.combine(SPRITE_PATH, "fall.png"), 1, 18, 12)
 local sprite_climb			= Resources.sprite_load(NAMESPACE, "NemsniperClimb", path.combine(SPRITE_PATH, "climb.png"), 6, 16, 22)
 local sprite_death			= Resources.sprite_load(NAMESPACE, "NemsniperDeath", path.combine(SPRITE_PATH, "death.png"), 7, 24, 21)
@@ -40,10 +41,11 @@ local sprite_idle2			= Resources.sprite_load(NAMESPACE, "NemsniperIdle1", path.c
 local sprite_walk2			= Resources.sprite_load(NAMESPACE, "NemsniperWalk1", path.combine(SPRITE_PATH, "walk_h1.png"), 8, 18, 12)
 local sprite_walk_back2		= Resources.sprite_load(NAMESPACE, "NemsniperWalkBack1", path.combine(SPRITE_PATH, "walk_h1.png"), 8, 18, 12)
 local sprite_jump2			= Resources.sprite_load(NAMESPACE, "NemsniperJump1", path.combine(SPRITE_PATH, "jump_h1.png"), 1, 18, 12)
+local sprite_jumpPeak2			= Resources.sprite_load(NAMESPACE, "NemsniperJumpPeak2", path.combine(SPRITE_PATH, "jumpPeak_h1.png"), 1, 18, 12)
 local sprite_fall2			= Resources.sprite_load(NAMESPACE, "NemsniperFall1", path.combine(SPRITE_PATH, "fall_h1.png"), 1, 18, 12)
 local sprite_climb2			= Resources.sprite_load(NAMESPACE, "NemsniperClimb1", path.combine(SPRITE_PATH, "climb_h1.png"), 6, 16, 22)
 local sprite_shoot1_1_2		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_1_1", path.combine(SPRITE_PATH, "shoot1_1_h1.png"), 6, 23, 31)
-local sprite_shoot1_2_2 		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_2_1", path.combine(SPRITE_PATH, "shoot1_2_h1.png"), 6, 23, 31)
+local sprite_shoot1_2_2 		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_2_1", path.combine(SPRITE_PATH, "shoot1_2_h1.png"), 6, 19, 28)
 local sprite_shoot3_2			= Resources.sprite_load(NAMESPACE, "NemsniperShoot3_1", path.combine(SPRITE_PATH, "shoot3_h1.png"), 12, 31, 47)
 
 -- Medium heated
@@ -51,10 +53,11 @@ local sprite_idle3			= Resources.sprite_load(NAMESPACE, "NemsniperIdle2", path.c
 local sprite_walk3			= Resources.sprite_load(NAMESPACE, "NemsniperWalk2", path.combine(SPRITE_PATH, "walk_h2.png"), 8, 18, 12)
 local sprite_walk_back3		= Resources.sprite_load(NAMESPACE, "NemsniperWalkBack2", path.combine(SPRITE_PATH, "walk_h2.png"), 8, 18, 12)
 local sprite_jump3			= Resources.sprite_load(NAMESPACE, "NemsniperJump2", path.combine(SPRITE_PATH, "jump_h2.png"), 1, 18, 12)
+local sprite_jumpPeak3			= Resources.sprite_load(NAMESPACE, "NemsniperJumpPeak2", path.combine(SPRITE_PATH, "jumpPeak_h2.png"), 1, 18, 12)
 local sprite_fall3			= Resources.sprite_load(NAMESPACE, "NemsniperFall2", path.combine(SPRITE_PATH, "fall_h2.png"), 1, 18, 12)
 local sprite_climb3			= Resources.sprite_load(NAMESPACE, "NemsniperClimb2", path.combine(SPRITE_PATH, "climb_h2.png"), 6, 16, 22)
 local sprite_shoot1_1_3		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_1_2", path.combine(SPRITE_PATH, "shoot1_1_h2.png"), 6, 23, 31)
-local sprite_shoot1_2_3 		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_2_2", path.combine(SPRITE_PATH, "shoot1_2_h2.png"), 6, 23, 31)
+local sprite_shoot1_2_3 		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_2_2", path.combine(SPRITE_PATH, "shoot1_2_h2.png"), 6, 19, 28)
 local sprite_shoot3_3			= Resources.sprite_load(NAMESPACE, "NemsniperShoot3_2", path.combine(SPRITE_PATH, "shoot3_h2.png"), 12, 31, 47)
 
 -- Quite heated
@@ -62,10 +65,11 @@ local sprite_idle4			= Resources.sprite_load(NAMESPACE, "NemsniperIdle3", path.c
 local sprite_walk4			= Resources.sprite_load(NAMESPACE, "NemsniperWalk3", path.combine(SPRITE_PATH, "walk_h3.png"), 8, 18, 12)
 local sprite_walk_back4		= Resources.sprite_load(NAMESPACE, "NemsniperWalkBack3", path.combine(SPRITE_PATH, "walk_h3.png"), 8, 18, 12)
 local sprite_jump4			= Resources.sprite_load(NAMESPACE, "NemsniperJump3", path.combine(SPRITE_PATH, "jump_h3.png"), 1, 18, 12)
+local sprite_jumpPeak4			= Resources.sprite_load(NAMESPACE, "NemsniperJumpPeak3", path.combine(SPRITE_PATH, "jumpPeak_h3.png"), 1, 18, 12)
 local sprite_fall4			= Resources.sprite_load(NAMESPACE, "NemsniperFall3", path.combine(SPRITE_PATH, "fall_h3.png"), 1, 18, 12)
 local sprite_climb4			= Resources.sprite_load(NAMESPACE, "NemsniperClimb3", path.combine(SPRITE_PATH, "climb_h3.png"), 6, 16, 22)
 local sprite_shoot1_1_4		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_1_3", path.combine(SPRITE_PATH, "shoot1_1_h3.png"), 6, 23, 31)
-local sprite_shoot1_2_4 		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_2_3", path.combine(SPRITE_PATH, "shoot1_2_h3.png"), 6, 23, 31)
+local sprite_shoot1_2_4 		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_2_3", path.combine(SPRITE_PATH, "shoot1_2_h3.png"), 6, 19, 28)
 local sprite_shoot3_4			= Resources.sprite_load(NAMESPACE, "NemsniperShoot3_3", path.combine(SPRITE_PATH, "shoot3_h3.png"), 12, 31, 47)
 
 -- REALLY heated
@@ -73,21 +77,22 @@ local sprite_idle5			= Resources.sprite_load(NAMESPACE, "NemsniperIdle4", path.c
 local sprite_walk5			= Resources.sprite_load(NAMESPACE, "NemsniperWalk4", path.combine(SPRITE_PATH, "walk_h4.png"), 8, 18, 12)
 local sprite_walk_back5		= Resources.sprite_load(NAMESPACE, "NemsniperWalkBack4", path.combine(SPRITE_PATH, "walk_h4.png"), 8, 18, 12)
 local sprite_jump5			= Resources.sprite_load(NAMESPACE, "NemsniperJump4", path.combine(SPRITE_PATH, "jump_h4.png"), 1, 18, 12)
+local sprite_jumpPeak5			= Resources.sprite_load(NAMESPACE, "NemsniperJumpPeak4", path.combine(SPRITE_PATH, "jumpPeak_h4.png"), 1, 18, 12)
 local sprite_fall5			= Resources.sprite_load(NAMESPACE, "NemsniperFall4", path.combine(SPRITE_PATH, "fall_h4.png"), 1, 18, 12)
 local sprite_climb5			= Resources.sprite_load(NAMESPACE, "NemsniperClimb4", path.combine(SPRITE_PATH, "climb_h4.png"), 6, 16, 22)
 local sprite_shoot1_1_5		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_1_4", path.combine(SPRITE_PATH, "shoot1_1_h4.png"), 6, 23, 31)
-local sprite_shoot1_2_5 		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_2_4", path.combine(SPRITE_PATH, "shoot1_2_h4.png"), 6, 23, 31)
+local sprite_shoot1_2_5 		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_2_4", path.combine(SPRITE_PATH, "shoot1_2_h4.png"), 6, 19, 28)
 local sprite_shoot3_5			= Resources.sprite_load(NAMESPACE, "NemsniperShoot3_4", path.combine(SPRITE_PATH, "shoot3_h4.png"), 12, 31, 47)
 
 -- Scalding
 local sprite_idle6			= Resources.sprite_load(NAMESPACE, "NemsniperIdle5", path.combine(SPRITE_PATH, "idle_h5.png"), 1, 18, 7)
 local sprite_walk6			= Resources.sprite_load(NAMESPACE, "NemsniperWalk5", path.combine(SPRITE_PATH, "walk_h5.png"), 8, 18, 12)
-local sprite_walk_back6		= Resources.sprite_load(NAMESPACE, "NemsniperWalkBack5", path.combine(SPRITE_PATH, "walk_h5.png"), 8, 18, 12)
 local sprite_jump6			= Resources.sprite_load(NAMESPACE, "NemsniperJump5", path.combine(SPRITE_PATH, "jump_h5.png"), 1, 18, 12)
+local sprite_jumpPeak6			= Resources.sprite_load(NAMESPACE, "NemsniperJumpPeak5", path.combine(SPRITE_PATH, "jumpPeak_h5.png"), 1, 18, 12)
 local sprite_fall6			= Resources.sprite_load(NAMESPACE, "NemsniperFall5", path.combine(SPRITE_PATH, "fall_h5.png"), 1, 18, 12)
 local sprite_climb6			= Resources.sprite_load(NAMESPACE, "NemsniperClimb5", path.combine(SPRITE_PATH, "climb_h5.png"), 6, 16, 22)
 local sprite_shoot1_1_6		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_1_5", path.combine(SPRITE_PATH, "shoot1_1_h5.png"), 6, 23, 31)
-local sprite_shoot1_2_6 		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_2_5", path.combine(SPRITE_PATH, "shoot1_2_h5.png"), 6, 23, 31)
+local sprite_shoot1_2_6 		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_2_5", path.combine(SPRITE_PATH, "shoot1_2_h5.png"), 6, 19, 28)
 local sprite_shoot3_6			= Resources.sprite_load(NAMESPACE, "NemsniperShoot3_5", path.combine(SPRITE_PATH, "shoot3_h5.png"), 12, 31, 47)
 
 local overheated = Buff.new(NAMESPACE, "debuffOverheated")
@@ -119,8 +124,9 @@ nemsniper:set_animations({
 		walk = sprite_walk,
 		walk_back = sprite_walk_back,
 		jump = sprite_jump,
-		peak = sprite_jump_peak,
+		jump_peak = sprite_jumpPeak,
 		fall = sprite_fall,
+		climb = sprite_climb,
 		death = sprite_death,
 		decoy = sprite_decoy,	
 		drone_idle = sprite_drone_idle,
@@ -160,6 +166,7 @@ Resources.sprite_load(NAMESPACE, "NemsniperPortraitSmall4", path.combine(SPRITE_
 local objHeatBar = Object.new(NAMESPACE, "NemsniperHeatBar")
 objHeatBar.obj_depth = -400
 
+
 -- Create skills
 local nemsniperPrimary = nemsniper:get_primary()
 local nemsniperSecondary = nemsniper:get_secondary()
@@ -181,60 +188,69 @@ nemsniper:onInit(function(actor)
 	end
 end)
 
-nemsniper:clear_callbacks()
 nemsniper:onStep(function(actor)
 if heat >= 0 then
-		idle = sprite_idle
-		walk = sprite_walk
-		walk_back = sprite_walk
-		jump = sprite_jump
-		jump_peak = sprite_jump_peak
-		fall = sprite_fall
+		actor.sprite_idle = sprite_idle
+		actor.sprite_walk = sprite_walk
+		actor.sprite_walk_back = sprite_walk
+		actor.sprite_jump = sprite_jump
+		actor.sprite_jump_peak = sprite_jumpPeak
+		actor.sprite_fall = sprite_fall
+		actor.sprite_climb = sprite_climb
 	end
-	
 	if heat >= 15 then
-		idle = sprite_idle2
-		walk = sprite_walk2
-		walk_back = sprite_walk2
-		jump = sprite_jump2
-		jump_peak = sprite_jump_peak2
-		fall = sprite_fall2
+		actor.sprite_idle = sprite_idle2
+		actor.sprite_walk = sprite_walk2
+		actor.sprite_walk_back = sprite_walk2
+		actor.sprite_jump = sprite_jump2
+		actor.sprite_jump_peak = sprite_jumpPeak2
+		actor.sprite_fall = sprite_fall2
+		actor.sprite_climb = sprite_climb2
 	end
-
 	if heat >= 31 then
-		idle = sprite_idle3
-		walk = sprite_walk3
-		walk_back = sprite_walk3
-		jump = sprite_jump3
-		jump_peak = sprite_jump_peak3
-		fall = sprite_fall3
+		actor.sprite_idle = sprite_idle3
+		actor.sprite_walk = sprite_walk3
+		actor.sprite_walk_back = sprite_walk3
+		actor.sprite_jump = sprite_jump3
+		actor.sprite_jump_peak = sprite_jumpPeak3
+		actor.sprite_fall = sprite_fall3
+		actor.sprite_climb = sprite_climb3
 	end
-
 	if heat >= 56 then
-		idle = sprite_idle4
-		walk = sprite_walk4
-		walk_back = sprite_walk4
-		jump = sprite_jump4
-		jump_peak = sprite_jump_peak4
-		fall = sprite_fall4
+		actor.sprite_idle = sprite_idle4
+		actor.sprite_walk = sprite_walk4
+		actor.sprite_walk_back = sprite_walk4
+		actor.sprite_jump = sprite_jump4
+		actor.sprite_jump_peak = sprite_jumpPeak4
+		actor.sprite_fall = sprite_fall4
+		actor.sprite_climb = sprite_climb4
 	end
-
 	if heat >= 76 then
-		idle = sprite_idle5
-		walk = sprite_walk5
-		walk_back = sprite_walk5
-		jump = sprite_jump5
-		jump_peak = sprite_jump_peak5
-		fall = sprite_fall5
+		actor.sprite_idle = sprite_idle5
+		actor.sprite_walk = sprite_walk5
+		actor.sprite_walk_back = sprite_walk5
+		actor.sprite_jump = sprite_jump5
+		actor.sprite_jump_peak = sprite_jumpPeak5
+		actor.sprite_fall = sprite_fall5
+		actor.sprite_climb = sprite_climb5
 	end
-
 	if heat >= 90 then
-		idle = sprite_idle6
-		walk = sprite_walk6
-		walk_back = sprite_walk6
-		jump = sprite_jump6
-		jump_peak = sprite_jump_peak6
-		fall = sprite_fall6
+		actor.sprite_idle = sprite_idle6
+		actor.sprite_walk = sprite_walk6
+		actor.sprite_walk_back = sprite_walk6
+		actor.sprite_jump = sprite_jump6
+		actor.sprite_jump_peak = sprite_jumpPeak6
+		actor.sprite_fall = sprite_fall6
+		actor.sprite_climb = sprite_climb6
+	end
+	if actor:buff_stack_count(overheated) == 1 then
+		actor.sprite_idle = sprite_idle6
+		actor.sprite_walk = sprite_walk6
+		actor.sprite_walk_back = sprite_walk6
+		actor.sprite_jump = sprite_jump6
+		actor.sprite_jump_peak = sprite_jumpPeak6
+		actor.sprite_fall = sprite_fall6
+		actor.sprite_climb = sprite_climb6
 	end
 end)
 
@@ -336,7 +352,7 @@ end)
 
 -- Secondary
 nemsniperSecondary.sprite = sprite_skills
-nemsniperSecondary.subimage = 1
+nemsniperSecondary.subimage = 2
 nemsniperSecondary.cooldown = 6.5 * 60
 nemsniperSecondary.damage = 0.18
 nemsniperSecondary.require_key_press = true
@@ -415,7 +431,7 @@ end)
 -- Utility
 
 nemsniperUtility.sprite = sprite_skills
-nemsniperUtility.subimage = 2
+nemsniperUtility.subimage = 3
 nemsniperUtility.cooldown = 6.5 * 60
 nemsniperUtility.require_key_press = true
 nemsniperUtility.does_change_activity_state = true
@@ -463,7 +479,7 @@ statenemsniperUtility:onStep(function(actor, data)
 	
 	if data.fired == 0 and actor.image_index >= 0 then
 	actor.pHspeed = -actor.pHmax * 5.6 * actor.image_xscale
-	actor:set_immune(4.5)
+	actor:set_immune(9.5)
 		actor:sound_play(gm.constants.wSniperBackflip, 0.6, 1 + math.random() * 0.2)
 		data.fired = 1
 		end
@@ -472,7 +488,7 @@ end)
 
 -- Special
 nemsniperSpecial.sprite = sprite_skills
-nemsniperSpecial.subimage = 3
+nemsniperSpecial.subimage = 5
 nemsniperSpecial.cooldown = 16 * 60
 nemsniperSpecial.damage = 0
 nemsniperSpecial.require_key_press = true
@@ -542,7 +558,7 @@ end)
 
 -- Grace field boosted
 nemsniperSpecialUpgraded.sprite = sprite_skills
-nemsniperSpecialUpgraded.subimage = 4
+nemsniperSpecialUpgraded.subimage = 6
 nemsniperSpecialUpgraded.cooldown = 16 * 60
 nemsniperSpecialUpgraded.damage = 0
 nemsniperSpecialUpgraded.require_key_press = true
@@ -634,12 +650,15 @@ objHeatBar:onCreate(function(self)
 	self.parent = -4
 	self.persistent = true
 end)
+
+objHeatBar:clear_callbacks()
 objHeatBar:onStep(function(self)
 	if not GM.actor_is_alive(self.parent) then
 		self:destroy()
 	end
 end)
 
+objHeatBar:clear_callbacks()
 objHeatBar:onDraw(function(self)
 	if not Instance.exists(self.parent) then return end
 	if not gm.bool(self.parent.visible) then return end
