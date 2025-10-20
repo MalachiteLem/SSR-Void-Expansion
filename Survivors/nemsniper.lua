@@ -19,6 +19,7 @@ local sprite_decoy			= Resources.sprite_load(NAMESPACE, "NemsniperDecoy", path.c
 local sprite_drone_idle		= Resources.sprite_load(NAMESPACE, "DronePlayerNemsniperIdle", path.combine(SPRITE_PATH, "droneIdle.png"), 5, 11, 14)
 local sprite_drone_shoot	= Resources.sprite_load(NAMESPACE, "DronePlayerNemsniperShoot", path.combine(SPRITE_PATH, "droneShoot.png"), 5, 33, 13)
 local sprite_credits		= Resources.sprite_load(NAMESPACE, "NemsniperCredits", path.combine(SPRITE_PATH, "credits.png"), 1)
+local sprite_log			= Resources.sprite_load(NAMESPACE, "NemsniperLog", path.combine(SPRITE_PATH, "log.png"))
 
 local sprite_shoot1_1		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_1", path.combine(SPRITE_PATH, "shoot1_1.png"), 6, 23, 31)
 local sprite_shoot1_2 		= Resources.sprite_load(NAMESPACE, "NemsniperShoot1_2", path.combine(SPRITE_PATH, "shoot1_2.png"), 6, 23, 31)
@@ -109,14 +110,14 @@ local heat = 0
 	
 nemsniper:set_stats_base({
 	maxhp = 99,
-	damage = 14.5,
-	regen = 0.015,
+	damage = 13.5,
+	regen = 0.008,
 })
 
 nemsniper:set_stats_level({
 		maxhp = 28,
-		damage = 4.2,
-		regen = 0.003,
+		damage = 3.2,
+		regen = 0.0015,
 })
 
 nemsniper:set_animations({
@@ -261,7 +262,7 @@ nemsniperPrimary.cooldown = 30
 nemsniperPrimary.damage = 2
 nemsniperPrimary.require_key_press = false
 nemsniperPrimary.is_primary = true
-nemsniperPrimary.disable_aim_stall = true
+nemsniperPrimary.disable_aim_stall = false
 nemsniperPrimary.does_change_activity_state = true
 nemsniperPrimary.hold_facing_direction = true
 nemsniperPrimary.required_interrupt_priority = State.ACTOR_STATE_INTERRUPT_PRIORITY.skill
@@ -357,7 +358,7 @@ nemsniperSecondary.cooldown = 6.5 * 60
 nemsniperSecondary.damage = 0.18
 nemsniperSecondary.require_key_press = true
 nemsniperSecondary.does_change_activity_state = true
-nemsniperSecondary.ignore_aim_direction = true
+nemsniperSecondary.ignore_aim_direction = false
 nemsniperSecondary.required_interrupt_priority = State.ACTOR_STATE_INTERRUPT_PRIORITY.skill
 
 local statenemsniperSecondary = State.new(NAMESPACE, "nemsniperSecondary")
@@ -433,6 +434,7 @@ end)
 nemsniperUtility.sprite = sprite_skills
 nemsniperUtility.subimage = 3
 nemsniperUtility.cooldown = 6.5 * 60
+nemsniperUtility.is_utility = true
 nemsniperUtility.require_key_press = true
 nemsniperUtility.does_change_activity_state = true
 nemsniperUtility.required_interrupt_priority = State.ACTOR_STATE_INTERRUPT_PRIORITY.skill
@@ -478,8 +480,8 @@ statenemsniperUtility:onStep(function(actor, data)
 	actor:skill_util_exit_state_on_anim_end()
 	
 	if data.fired == 0 and actor.image_index >= 0 then
-	actor.pHspeed = -actor.pHmax * 5.6 * actor.image_xscale
-	actor:set_immune(9.5)
+	actor.pHspeed = -actor.pHmax * 5.8 * actor.image_xscale
+	actor:set_immune(11.5)
 		actor:sound_play(gm.constants.wSniperBackflip, 0.6, 1 + math.random() * 0.2)
 		data.fired = 1
 		end
