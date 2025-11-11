@@ -6,8 +6,7 @@
 
 Void Expansion is a WIP mod, featuring content from the original Starstorm mod and expanding upon things already within Starstorm Returns.
 
-Currently on a "hiatus" and will likely never have work continued on it due to burnout and the feeling that what's being done is not enough.
-Seraph and Nemsniper are mostly playable, just missing critical details like Seraph's pull and Nemsniper's SPOT.
+You can join [our discord server here!](https://discord.gg/djSmq2RgBp)
 
 Be sure to also visit [Starstorm Returns Discord Server!](https://discord.gg/fGShMVEayr)
 ** **
@@ -45,5 +44,6 @@ SSR Team - Creating the remaster of Starstorm mod in Risk of Rain Returns
 Risk of Rain Returns Modding Discord - Modding API, coding help, inspiration
 
 And everyone else who was involved in any way with this!
+
 
 
