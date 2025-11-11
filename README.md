@@ -1,13 +1,13 @@
 
-# Starstorm Returns: Void Expansion
+# Starstorm Returns: Void Expansion [ON A HIATUS]
 <img width="704" height="500" alt="image" src="https://github.com/user-attachments/assets/cb00a8a7-4cb3-4288-9f0a-626bd55c7b41" />
 
 #
 
 Void Expansion is a WIP mod, featuring content from the original Starstorm mod and expanding upon things already within Starstorm Returns.
-It will add* 13 Survivors, 5 Stages, 15 Enemies, 6 Bosses, 1 Final Boss, 4 Events, Mechanics, Interactions, and many more!
 
-You can join our discord [here!](https://discord.gg/B26hGgS9Jd)
+Currently on a "hiatus" and will likely never have work continued on it due to burnout and the feeling that what's being done is not enough.
+Seraph and Nemsniper are mostly playable, just missing critical details like Seraph's pull and Nemsniper's SPOT.
 
 Be sure to also visit [Starstorm Returns Discord Server!](https://discord.gg/fGShMVEayr)
 ** **
@@ -45,4 +45,5 @@ SSR Team - Creating the remaster of Starstorm mod in Risk of Rain Returns
 Risk of Rain Returns Modding Discord - Modding API, coding help, inspiration
 
 And everyone else who was involved in any way with this!
+
 
