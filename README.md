@@ -1,5 +1,5 @@
 
-# Starstorm Returns: Void Expansion [ON A HIATUS]
+# Starstorm Returns: Void Expansion
 <img width="704" height="500" alt="image" src="https://github.com/user-attachments/assets/cb00a8a7-4cb3-4288-9f0a-626bd55c7b41" />
 
 #
@@ -44,6 +44,7 @@ SSR Team - Creating the remaster of Starstorm mod in Risk of Rain Returns
 Risk of Rain Returns Modding Discord - Modding API, coding help, inspiration
 
 And everyone else who was involved in any way with this!
+
 
 
 
