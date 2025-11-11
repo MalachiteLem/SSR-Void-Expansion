@@ -11,15 +11,15 @@
             "name": "Pyro",
             "nameUpper": "PYRO",
             "description": "The <y>Pyro</c> is equipped with a flamethrower, utilizing it for own advantage. <y>Scorch</c> enemies to build up his heat gauge, <y>empowering</c> other skills at high levels of heat. Pyro is able to distance himself from threats with <y>Heatblast</c>, while also effectively clearing groups of enemies with <y>Blazeborne</c>.",
-            "endQuote": "..and so he left, scorching his way into a brighter future.",
+            "endQuote": "..and so he left, lighting up a path to a brighter future.",
             "story": "I am so badass, and they call me Pyro. Pyro like PYROmaniac, you get it? (killing myself over that joke.)"
         },
         "nemsniper": {
             "name": "Nemesis Sniper",
             "nameUpper": "NEMESIS SNIPER",
-            "description": "The <y>Nemesis Sniper</c> arrived without invitation, determined to <y>Take Out</c> targets with a railgun, and a state of the art support drone ''<y>SPOT: CONDUIT</c>''. <r>Overheating causes the weapon to be unstable temporarily.</c>",
+            "description": "The <y>Nemesis Sniper</c> arrived without invitation, determined to <y>Take Out</c> targets with a railgun, and a state of the art support drone ''<y>SPOT: CONDUIT</c>''. <r>Overheat causes the railgun to be unusable temporarily,</c> but can also be used to your advantage with <y>Steady Discharge</c>.",
             "endQuote": "..and so they left, finding a home amongst the stars.",
-            "story": "Placeholder"
+            "story": "heat my ass"
         }
     },
     "skill": {
@@ -28,8 +28,8 @@
             "description": "Fire void energy at enemies for <y>140% damage in a small area</c>. <b>You can shoot while moving.</c>"
         },
         "seraphZ2": {
-            "name": "Seraph's Focus",
-            "description": "Placeholder (i've got no idea for a good alt primary, or any other skill)"
+            "name": "Void's Rupture",
+            "description": "Call forth void energy, which grows in size and damage, up to a maximum of <y>360% damage per rupture</c>. You can <b>rupture the energy</c> by pressing the button again. <b>You can shoot while moving.</c>"
         },
         "seraphX": {
             "name": "Void Breach",
@@ -40,8 +40,8 @@
             "description": "While <b>moving</c>: <b>pull</c> enemies towards you, damaging them for <y>110% damage</c> and <b>pushing yourself forward</c>.\nWhile <b>still</c>: <b>raise</c> enemies into the air and <y>bash</c> them to the ground for <y>310% damage</c>."
         },
         "seraphC2": {
-            "name": "Rupturing",
-            "description": "Placeholder (i've got no idea for a good alt primary, or any other skill)."
+            "name": "Deliverance",
+            "description": "<b>Pierce</c> the ground using void energy, dealing <y>200% damage</c> to enemies caught in a radius."
         },
         "seraphV": {
             "name": "Grace Field",
@@ -52,12 +52,12 @@
             "description": "<y>Create a void energy field at you position</c> for 6 seconds. In the field; <b>reduced utility skill cooldown for all allies</c>, <y>enemies get stopped in time and have Shatter debuff applied to them continuously</c>."
         },
         "seraphV2": {
-            "name": "Placeholder",
-            "description": "Placeholder (i've got no idea for a good alt primary, or any other skill)"
+            "name": "Call of the Deep",
+            "description": "Enter a limbo state, <b>turning invisible</c> for 2 seconds. While in limbo, <b>colliding</c> with enemies deals <y>160% damage</c> to them. <b>Can collide with the same enemy two times maximum.</c>"
         },
         "seraphV2Boosted": {
-            "name": "Placeholder",
-            "description": "Placeholder (i've got no idea for a good alt primary, or any other skill)."
+            "name": "Call of the Void",
+            "description": "Enter a limbo state, <b>turning invisible</c> for 4 seconds. While in limbo, <b>colliding</c> with enemies <b>explodes them with Shatter</c> for <y>300% damage</c>. <b>Can collide with the same enemy three times maximum.</c>"
         },
         "pyroZ": {
             "name": "Scorch",
@@ -83,13 +83,21 @@
             "name": "Take Out",
             "description": "Shoot an enemy for <y>200% damage.</c> <r>Heats up the weapon.</c>"
         },
+		"nemsniperZ2": {
+            "name": "Blasting shot",
+            "description": "Fire an explosive round for <y>140% damage</c>, which explodes into <b>shrapnel on impact</c>, that <y>deals 4x40% damage</c>. <r>Heats up the weapon</c>"
+        },
         "nemsniperX": {
             "name": "Steady Discharge",
-            "description": "Release all of the <y>captured heat</c> from the weapon in form of a <y>piercing round</c>, which deals <y>up to 1800% damage</c> depending on the heat released."
+            "description": "Release all of the <y>captured heat</c> from the weapon in form of a <y>piercing round</c>, dealing <y>up to 180-1800% damage</c> depending on the heat released."
         },
         "nemsniperC": {
+            "name": "Tactical Blast",
+            "description": "<b>Blast</c> yourself backwards, <y>piercing</c> all enemies in your way <y>for 120% damage</c>. <r>Burns enemies when overheated.</c>"
+        },
+		"nemsniperC2": {
             "name": "Combat Advantage",
-            "description": "<b>Slide</c> forward with the railgun held out, <y>kicking</c> enemies out of the way for <y>145% damage</c> with it.\nYou <b>cannot be hit</c> while sliding."
+            "description": "<y>Backflip</c> a medium distance, <b>cooling</c> the weapon slightly.\nYou <b>cannot be hit</c> while sliding."
         },
         "nemsniperV": {
             "name": "SPOT: CONDUIT",
@@ -97,7 +105,35 @@
         },
         "nemsniperVBoosted": {
             "name": "SPOT: OUTBURST",
-            "description": "Send SPOT to <y>distract</c> the most <r>dangerous enemy nearby</c> for <b>6 seconds</c>, <y>discharging electricity at it for 7x100% damage</c>."
+            "description": "Send SPOT to <y>distract</c> the most <r>dangerous enemy nearby</c> for <b>6 seconds</c>, <y>discharging electricity all around for 8x100% damage</c>."
+        },
+		"nemsniperV2": {
+            "name": "Overheat",
+            "description": "<r>Rapidly heat up the weapon</c>, releasing a powerful round <y>dealing 2500% damage</c>.\n<r>Cannot use the weapon for 8 seconds afterwards</c>"
+        },
+		 "nemsniperV2Boosted": {
+            "name": "Overscald",
+            "description": "<r>Rapidly heat up the weapon</c>, releasing a powerful round <y>dealing 3400% damage</c> and scattering <y>scorching shrapnel</c> nearby, <y>dealing 50% damage and burning enemies</c> with each shrapnel.\n<r>Cannot use the weapon for 6 seconds afterwards</c>"
+        },
+		"nemacridZ": {
+            "name": "Maul",
+            "description": "Tear an enemy apart for <y>100% damage</c>, inflicting <y>rot</c>."
+        },
+		"nemacridX": {
+            "name": "Jailbreak",
+            "description": "Become furious, temporarily <r>lowering movement and attack speed by 40%</c> while </c>doubling damage dealt</c>."
+        },
+		"nemacridC": {
+            "name": "Contagion Sludge",
+            "description": "Produce a pool of sludge. <y>All enemies in it share 50% damage taken</c>."
+        },
+		"nemacridV": {
+            "name": "Radioactive Sputum",
+            "description": "Spit radioactive saliva that sticks to an enemy, dealing <y>100% damage per second for 15 seconds</c>."
+        },
+		"nemacridVBoosted": {
+            "name": "Decay Matter",
+            "description": "Spit corrosive saliva that sticks to an enemy, dealing <y>250% damage per second for 10 seconds</c>. Corrosed enemies leave a <y>small pool of contagion sludge</c> when killed."
         }
     },
     "item": {
@@ -342,5 +378,27 @@
 		
         "VoidChest.name": "Small Void Chest",
         "VoidChest.text": "IDK how to make the desc lmfao"
-    }
+    },
+	"event": {
+		"Storm.text1": "A storm is approaching...",
+		"Storm.text.2": "A thunder pierces the sky..."
+		
+		"Snowstorm.text1": "A snowstorm is approaching...",
+		"Snowstorm.text.2": "A blizzard rolls in..."
+		
+		"AshStorm.text1": "An ash storm builds up...",
+		"AshStorm.text2": "Ash and cinder blow strongly..."
+		
+		"Sandstorm.text1": "A sandstorm is approaching...",
+		"Sandstorm.text2": "Wind blows the sand with great force..."
+		
+		"Dissonance.text1": "The planet dissonates..."
+		
+		"VoidInv.text1": "The void envades..."
+		
+		"Rain.text1": "A rain starts to fall...",
+		"Rain.text2": "Raindrops fall from the sky..."
+		
+		"NemesisInv.text": "You feel an ominous presence..."
+	}
 }
